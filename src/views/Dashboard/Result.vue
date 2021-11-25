@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2>Create Application</h2>
+        <h2>Result</h2>
     </div>
 </template>
 
