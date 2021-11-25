@@ -37,37 +37,4 @@
         height: 12.37px;
         cursor: pointer;
     }
-
-    &-header {
-        font-weight: 300;
-        font-size: 29px;
-        color: $primary-color;
-        @include media-breakpoint-up(md) {
-            font-weight: 300;
-            font-size: 43px;
-            color: $primary-color;
-        }
-        &-wrapper {
-            @include media-breakpoint-up(md) {
-                font-weight: 300;
-                font-size: 43px;
-                color: $primary-color;
-            }   
-        }
-    }
-    
-    &-content {
-        margin-top: 61px;
-    }
-
-    &-bottom {
-        display: flex;
-        flex-direction: column;
-        margin-top: 30px;
-        @include media-breakpoint-up(lg) {
-            margin-top: 97px;
-            display: flex;
-            flex-direction: row;
-        }
-    }
 }
