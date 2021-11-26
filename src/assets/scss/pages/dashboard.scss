@@ -37,4 +37,115 @@
         height: 12.37px;
         cursor: pointer;
     }
+
+    &-container {
+        margin-top: 70px;
+        margin-left: 56px;
+        @include media-breakpoint-up (sm) {
+            margin-left: 56px;
+            margin-top: 107px;
+        }
+    }
+
+    &-header {
+        color: $primary-color;
+        font-weight: 300;
+        font-style: normal;
+        font-size: 43px;
+    }
+
+    &-current-app-wrapper {
+        margin-top: 65px;
+    }
+
+    &-app-text {
+        font-weight: 400;
+        font-size: 14px;
+        color: $primary-color;
+        line-height: 0;
+    }
+
+    &-app-no {
+        font-weight: 300;
+        font-size: 48px;
+    }
+
+    &-academy-stage {
+        font-size: 12px;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    &-total-app-wrapper, &-academy-wrapper {
+        margin-top: 20px;
+        margin-left: 0;
+        @include media-breakpoint-up (sm) {
+            margin-top: 65px;
+            margin-left: 99px;
+        }
+    }
+
+    &-data {
+        display: flex;
+        flex-direction: column;
+        @include media-breakpoint-up (sm) {
+            display: flex;
+            flex-direction: row;
+        }
+    }
+
+    &-information {
+        margin-top: 77px;
+        display: flex;
+        flex-direction: column;
+        @include media-breakpoint-up (xl) {
+            margin-top: 77px;
+            display: flex;
+            flex-direction: row;
+        }
+    }
+
+    &-history-text {
+        font-size: 16px;
+        font-weight: 700;
+        font-style: normal;
+        color: $primary-color;
+    }
+
+    &-update-date {
+        font-size: 12px;
+        font-style: normal;
+        color: $primary-color;
+        font-weight: 400;
+        margin-top: -13px;
+    }
+
+    &-info-table {
+        padding: 20px;
+        font-size: 14px;
+        width: 482px;
+        color: $primary-color;
+        cursor: pointer;
+        :hover {
+            border-left: 10px solid $purple-color;
+            background: $white-color;
+            box-shadow: 0px 5px 15px rgba(33, 31, 38, 0.05);
+            border-radius: 8px;
+        }
+    }
+
+    &-create-assessment {
+        margin-right: auto;
+        border: 1px solid #ECECF9;
+        border-radius: 4px;
+        padding: 10px;
+        @include media-breakpoint-up (xl) {
+            margin-left: auto;
+            border: 1px solid #ECECF9;
+            border-radius: 4px;
+            padding: 10px;
+        }
+    }
+
+    
 }
