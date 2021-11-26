@@ -1,0 +1,9 @@
+.btn {
+    &--gray {
+        color: $white-color;
+        background: $deep-grey;
+        border: none;
+        height: 41px;
+        margin-bottom: 40px;
+    }
+}

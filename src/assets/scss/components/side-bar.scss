@@ -8,6 +8,13 @@
     bottom: 0;
     overflow-y: scroll;
 
+    &::-webkit-scrollbar {
+        width: 7px;
+        &-thumb{
+            background-color: $purple-color;
+        }
+    }
+
     &-top {
         background-color: $purple-color;
         height: 255px;
