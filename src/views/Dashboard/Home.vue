@@ -47,10 +47,10 @@
                 </div>
             </div>
 
-            <div class="dashboard-create-assessment">
-                    <p class="dashboard-create-text p-2 fw-bold fs-6">Create Assessment</p>
+            <div class="dashboard-create-assessment py-3 px-4 mt-4 mt-lg-0">
+                    <p class="dashboard-create-text p-2 pb-0 fw-bold fs-6">Create Assessment</p>
                     <div class="text-center mb-4 d-flex flex-column justify-content-center">    
-                        <p class="fs-6 fw-normal pe-5 ps-5 mt-5">Create test question for an incoming academy students</p>
+                        <p class="fs-6 fw-normal px-3 px-xl-5 mt-5">Create test question for an incoming academy students</p>
                         <router-link :to="{ name: 'create-application' }">
                             <Button btnText='Create Assessment' btnStyle='btn--gray mt-2' />
                         </router-link>

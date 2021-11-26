@@ -39,10 +39,14 @@
     }
 
     &-container {
-        margin-top: 30px;
-        margin-left: 56px;
-        margin-right: 20px;
-        @include media-breakpoint-up (md) {
+        margin: 30px 20px;
+        @include media-breakpoint-up(sm) {
+            margin: 50px 36px;
+        }
+        @include media-breakpoint-up(md) {
+            margin: 50px 28px;
+        }
+        @include media-breakpoint-up (lg) {
             margin-left: 56px;
             margin-top: 107px;
         }
@@ -55,8 +59,13 @@
         font-size: 43px;
     }
 
-    &-current-app-wrapper {
-        margin-top: 65px;
+    &-current-app-wrapper,
+    &-total-app-wrapper,
+    &-academy-wrapper {
+        margin-top: 35px;
+        @include media-breakpoint-up(sm) {
+            margin-top: 65px;
+        }
     }
 
     &-app {
@@ -78,14 +87,6 @@
         font-style: normal;
     }
 
-    &-total-app-wrapper {
-        margin-top: 65px;
-    }
-
-    &-academy-wrapper {
-        margin-top: 65px;
-    }
-
     &-data {
         display: flex;
         flex-wrap: wrap;
@@ -96,14 +97,11 @@
     }
 
     &-information {
-        margin-top: 77px;
         display: flex;
         flex-direction: column;
-        margin-right: auto;
-        margin-left: auto;
+        margin: 48px auto 0;
         @include media-breakpoint-up (lg) {
             margin-top: 77px;
-            display: flex;
             flex-direction: row;
         }
     }
@@ -130,6 +128,10 @@
         color: $primary-color;
         cursor: pointer;
         margin-bottom: 10px;
+        overflow-x: scroll;
+        @include media-breakpoint-up(sm) {
+            overflow-x: unset;
+        }
         :hover {
             border-left: 10px solid $purple-color;
             background: $white-color;
@@ -139,16 +141,15 @@
     }
 
     &-create-assessment {
-        margin-right: 30px;
         border: 1px solid #ECECF9;
         border-radius: 4px;
-        padding: 10px;
-        margin-left: 0;
-        @include media-breakpoint-up (lg) {
-            margin-left: 97px;
+        @include media-breakpoint-up(md) {
+            margin-left: 28px;
+        }
+        @include media-breakpoint-up (xl) {
+            margin-left: 37px;
             border: 1px solid #ECECF9;
             border-radius: 4px;
-            padding: 10px;
         }
     }
 
