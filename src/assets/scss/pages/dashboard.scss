@@ -39,9 +39,10 @@
     }
 
     &-container {
-        margin-top: 70px;
+        margin-top: 30px;
         margin-left: 56px;
-        @include media-breakpoint-up (sm) {
+        margin-right: 20px;
+        @include media-breakpoint-up (md) {
             margin-left: 56px;
             margin-top: 107px;
         }
@@ -58,16 +59,17 @@
         margin-top: 65px;
     }
 
-    &-app-text {
+    &-app {
+        &-text {
         font-weight: 400;
         font-size: 14px;
         color: $primary-color;
         line-height: 0;
-    }
-
-    &-app-no {
-        font-weight: 300;
-        font-size: 48px;
+        }
+        &-no {
+            font-weight: 300;
+            font-size: 48px;
+        }
     }
 
     &-academy-stage {
@@ -76,21 +78,20 @@
         font-style: normal;
     }
 
-    &-total-app-wrapper, &-academy-wrapper {
-        margin-top: 20px;
-        margin-left: 0;
-        @include media-breakpoint-up (sm) {
-            margin-top: 65px;
-            margin-left: 99px;
-        }
+    &-total-app-wrapper {
+        margin-top: 65px;
+    }
+
+    &-academy-wrapper {
+        margin-top: 65px;
     }
 
     &-data {
         display: flex;
-        flex-direction: column;
-        @include media-breakpoint-up (sm) {
-            display: flex;
-            flex-direction: row;
+        flex-wrap: wrap;
+        column-gap: 30px;
+        @include media-breakpoint-up (md) {
+            column-gap: 99px;
         }
     }
 
@@ -98,7 +99,9 @@
         margin-top: 77px;
         display: flex;
         flex-direction: column;
-        @include media-breakpoint-up (xl) {
+        margin-right: auto;
+        margin-left: auto;
+        @include media-breakpoint-up (lg) {
             margin-top: 77px;
             display: flex;
             flex-direction: row;
@@ -121,11 +124,12 @@
     }
 
     &-info-table {
-        padding: 20px;
+        padding: 10px;
         font-size: 14px;
-        width: 482px;
+        margin: 0;
         color: $primary-color;
         cursor: pointer;
+        margin-bottom: 10px;
         :hover {
             border-left: 10px solid $purple-color;
             background: $white-color;
@@ -135,17 +139,29 @@
     }
 
     &-create-assessment {
-        margin-right: auto;
+        margin-right: 30px;
         border: 1px solid #ECECF9;
         border-radius: 4px;
         padding: 10px;
-        @include media-breakpoint-up (xl) {
-            margin-left: auto;
+        margin-left: 0;
+        @include media-breakpoint-up (lg) {
+            margin-left: 97px;
             border: 1px solid #ECECF9;
             border-radius: 4px;
             padding: 10px;
         }
     }
 
+    &-col {
+        pointer-events: none
+    }
+
+    &-table-row {
+        width: fit-content;
+        margin: 0 auto;
+        @include media-breakpoint-up (lg) {
+            width: fit-content;
+        }
+    }
     
 }
