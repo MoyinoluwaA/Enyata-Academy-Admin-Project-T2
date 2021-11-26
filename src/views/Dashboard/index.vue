@@ -1,17 +1,19 @@
 <template>
     <div>
-        <Sidebar />
-        <router-view />
+        <SideBar />
+        <div class="dashboard-main">    
+            <router-view />
+        </div>
     </div>
 </template>
 
 <script>
-import Sidebar from '@/components/SideBar.vue'
+import SideBar from '@/components/SideBar.vue'
 
 export default {
     name: 'Dashboard',
     components: {
-        Sidebar
+        SideBar
     }
 }
 </script>

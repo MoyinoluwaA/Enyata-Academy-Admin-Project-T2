@@ -12,6 +12,7 @@ const routes = [
 	},
 	{
 		path: '/dashboard',
+		redirect: '/dashboard/home',
 		name: 'Dashboard',
 		component: () => import(/* webpackChunkName: "about" */ '../views/Dashboard/index.vue'),
 		children: [
@@ -22,8 +23,28 @@ const routes = [
 			},
 			{
 				path: 'create-application',
-				name: 'user-dashboard',
+				name: 'create-application',
 				component: () => import('../views/Dashboard/CreateApplication.vue')
+			},
+			{
+				path: 'application-entries',
+				name: 'application-entries',
+				component: () => import('../views/Dashboard/ApplicationEntries.vue')
+			},
+			{
+				path: 'compose-assessment',
+				name: 'compose-assessment',
+				component: () => import('../views/Dashboard/ComposeAssessment.vue')
+			},
+			{
+				path: 'result',
+				name: 'result',
+				component: () => import('../views/Dashboard/Result.vue')
+			},
+			{
+				path: 'settings',
+				name: 'settings',
+				component: () => import('../views/Dashboard/Settings.vue')
 			}
 			]
 	}

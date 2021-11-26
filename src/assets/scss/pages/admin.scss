@@ -1,0 +1,15 @@
+.admin {
+    &-name {
+        color: $white-color;
+        font-size: 20px;
+        margin-top: 13px;
+    }
+    
+    &-mail {
+        color: $white-color;
+        font-size: 16px;
+        margin-top: 5px;
+        font-style: italic;
+        margin-bottom: 38px;
+    }
+}
