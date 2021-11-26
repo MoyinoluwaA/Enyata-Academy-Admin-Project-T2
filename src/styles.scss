@@ -1,6 +1,8 @@
 @import "node_modules/bootstrap/scss/bootstrap";
 @import "./assets/scss/base.scss";
 
+@import "./assets/scss/components/btn.scss";
+
 @import "./assets/scss/pages/admin.scss";
 @import "./assets/scss/pages/dashboard.scss";
 @import "./assets/scss/pages/logout.scss";

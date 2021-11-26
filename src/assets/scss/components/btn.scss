@@ -1,0 +1,10 @@
+.btn {
+    &--gray {
+        color: $white-color;
+        background: $deep-grey;
+        border: none;
+        width: 205px;
+        height: 41px;
+        margin: 0 auto;
+    }
+}
