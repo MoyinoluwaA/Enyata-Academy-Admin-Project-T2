@@ -7,6 +7,7 @@
             margin: 60px 32px;
             @include media-breakpoint-up (sm) {
                 margin: 107px 61px 86px 47px;
+                font-family: $font-stack-lato;
             }
         }
     }
@@ -28,6 +29,7 @@
         font-size: 16px;
         color: $primary-color;
         cursor: pointer;
+        font-family: $font-stack-lato;
     }
     
     &-img {
@@ -48,7 +50,8 @@
         }
         @include media-breakpoint-up (lg) {
             margin-left: 56px;
-            margin-top: 107px;
+            margin-top: 101px;
+            font-family: $font-stack-lato;
         }
     }
 
@@ -57,6 +60,7 @@
         font-weight: 300;
         font-style: normal;
         font-size: 43px;
+        font-family: $font-stack-lato;
     }
 
     &-current-app-wrapper,
@@ -65,6 +69,7 @@
         margin-top: 35px;
         @include media-breakpoint-up(sm) {
             margin-top: 65px;
+            font-family: $font-stack-lato;
         }
     }
 
@@ -74,10 +79,12 @@
         font-size: 14px;
         color: $primary-color;
         line-height: 0;
+        font-family: $font-stack-lato;
         }
         &-no {
             font-weight: 300;
             font-size: 48px;
+            font-family: $font-stack-lato;
         }
     }
 
@@ -85,6 +92,7 @@
         font-size: 12px;
         font-weight: 400;
         font-style: normal;
+        font-family: $font-stack-lato;
     }
 
     &-data {
@@ -93,6 +101,7 @@
         column-gap: 30px;
         @include media-breakpoint-up (md) {
             column-gap: 99px;
+            font-family: $font-stack-lato;
         }
     }
 
@@ -103,6 +112,7 @@
         @include media-breakpoint-up (lg) {
             margin-top: 77px;
             flex-direction: row;
+            font-family: $font-stack-lato;
         }
     }
 
@@ -111,6 +121,7 @@
         font-weight: 700;
         font-style: normal;
         color: $primary-color;
+        font-family: $font-stack-lato;
     }
 
     &-update-date {
@@ -119,6 +130,7 @@
         color: $primary-color;
         font-weight: 400;
         margin-top: -13px;
+        font-family: $font-stack-lato;
     }
 
     &-info-table {
@@ -131,6 +143,7 @@
         overflow-x: scroll;
         @include media-breakpoint-up(sm) {
             overflow-x: unset;
+            font-family: $font-stack-lato;
         }
         :hover {
             border-left: 10px solid $purple-color;
@@ -162,6 +175,7 @@
         margin: 0 auto;
         @include media-breakpoint-up (lg) {
             width: fit-content;
+            font-family: $font-stack-lato;
         }
     }
     

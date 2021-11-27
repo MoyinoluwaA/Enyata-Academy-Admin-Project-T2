@@ -3,6 +3,7 @@
         color: $white-color;
         font-size: 20px;
         margin-top: 13px;
+        font-family: $font-stack-lato;
     }
     
     &-mail {
@@ -11,5 +12,11 @@
         font-style: italic;
         margin-top: 0;
         margin-bottom: 38px;
+        font-family: $font-stack-lato;
+    }
+
+    &-profile-form {
+        margin-top: 56px;
+        font-family: $font-stack-lato;
     }
 }

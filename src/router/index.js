@@ -43,10 +43,23 @@ const routes = [
 			},
 			{
 				path: 'settings',
+				redirect: 'settings/admin-profile',
 				name: 'settings',
-				component: () => import('../views/Dashboard/Settings.vue')
+				component: () => import('../views/Dashboard/Settings/index.vue'),
+				children: [
+					{
+						path: 'admin-profile',
+						name: 'admin-profile',
+						component: () => import('../views/Dashboard/Settings/AdminProfile.vue')
+					},
+					{
+						path: 'time-settings',
+						name: 'time-settings',
+						component: () => import('../views/Dashboard/Settings/TimerSettings.vue')
+					}
+				]
 			}
-			]
+		]
 	}
 ]
 

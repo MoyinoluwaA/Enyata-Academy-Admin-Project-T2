@@ -115,14 +115,14 @@
 
                     <div class="dashboard-menus">
                         <router-link class="dashboard-link" :to="{ name: 'result' }">
-                            <img class="dashboard-img" src="../assets/icons/result-icon.svg" alt="create"/>
+                            <img class="dashboard-img" src="../assets/icons/result-icon.svg" alt="result"/>
                             <span class="dashboard-menu">Result</span>
                         </router-link>
                     </div>
 
                     <div class="dashboard-menus">
                         <router-link class="dashboard-link" :to="{ name: 'settings' }">
-                            <img class="dashboard-img" src="../assets/icons/settings-icon.svg" alt="create"/>
+                            <img class="dashboard-img" src="../assets/icons/settings-icon.svg" alt="settings"/>
                             <span class="dashboard-menu">Settings</span>
                         </router-link>
                     </div>

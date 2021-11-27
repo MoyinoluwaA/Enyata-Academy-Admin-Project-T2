@@ -6,4 +6,41 @@
         height: 41px;
         margin-bottom: 40px;
     }
+
+    &-wrapper {
+        margin-top: 86px;
+        display: flex;
+        column-gap: 30px;
+    }
+
+    &-switch-setting {
+        padding: 14px 28px 14px 28px;
+        font-weight: 400;
+        font-size: 14px;
+    }
+    &-switch-setting:hover {
+        background: $switch-color;
+    }
+    
+    &-edit {
+        border: 1px solid $purple-color;
+        border-radius: 3px;
+        padding: 0px 30px 0px 30px;
+        height: 38px;
+        color: $purple-color;
+        margin-left: auto;
+    }
+
+    &-save {
+        background: $purple-color;
+        border-radius: 3px;
+        padding: 7px 46px 7px 46px;
+        color: $white-color;
+        margin-top: 55px;
+
+        &-wrapper {
+            width: 30%;
+            margin: 0 auto;
+        }
+    }
 }
