@@ -11,7 +11,7 @@
 <script>
 import Settings from './Settings.vue'
 export default {
-    name: 'index',
+    name: 'SettingsHandler',
     components: {
         Settings
     }

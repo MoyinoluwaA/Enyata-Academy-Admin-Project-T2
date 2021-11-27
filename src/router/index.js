@@ -45,7 +45,7 @@ const routes = [
 				path: 'settings',
 				redirect: 'settings/admin-profile',
 				name: 'settings',
-				component: () => import('../views/Dashboard/Settings/index.vue'),
+				component: () => import('../views/Dashboard/Settings/SettingsHandler.vue'),
 				children: [
 					{
 						path: 'admin-profile',

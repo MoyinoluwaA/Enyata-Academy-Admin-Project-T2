@@ -17,9 +17,10 @@
         padding: 14px 28px 14px 28px;
         font-weight: 400;
         font-size: 14px;
-    }
-    &-switch-setting:hover {
-        background: $switch-color;
+        
+        &:hover {
+            background: $switch-color;
+        }
     }
     
     &-edit {
