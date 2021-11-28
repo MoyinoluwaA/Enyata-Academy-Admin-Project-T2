@@ -1,7 +1,6 @@
 .btn {
     &--gray {
-        color: $white-color;
-        background: $deep-grey;
+        @include button($deep-grey, $white-color);
         border: none;
         height: 41px;
         margin-bottom: 40px;
@@ -33,10 +32,9 @@
     }
 
     &-save {
-        background: $purple-color;
+        @include button($purple-color, $white-color);
         border-radius: 3px;
         padding: 7px 46px 7px 46px;
-        color: $white-color;
         margin-top: 55px;
 
         &-wrapper {
@@ -46,32 +44,22 @@
     }
 
     &-next, &-prev {
-        background: $primary-color;
-        color: $white-color;
+        @include button($primary-color, $white-color);
         border-radius: 4px;
         width: 90px;
         @include media-breakpoint-up (md) {
-            background: $primary-color;
-            color: $white-color;
-            border-radius: 4px;
             width: 124px;
         }
     }
 
     &-finish {
-        background: $grey-color;
-        color: $white-color;
+        @include button($grey-color, $white-color);
         height: 41px;
-        margin-top: 41px;
+        margin: 41px 0 20px;
         width: 105px;
         border-radius: 4px;
         @include media-breakpoint-up (md) {
-            background: $grey-color;
-            color: $white-color;
-            height: 41px;
-            margin-top: 41px;
             width: 195px;
-            border-radius: 4px;
         }
     }
 }

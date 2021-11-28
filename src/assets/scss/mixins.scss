@@ -1,0 +1,7 @@
+@mixin button ($bg, $color) {
+    background-color: $bg;
+    color: $color;
+    &:hover {
+        color: $purple-color;
+    }
+}
