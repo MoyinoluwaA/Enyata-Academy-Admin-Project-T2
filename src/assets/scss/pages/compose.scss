@@ -1,0 +1,51 @@
+.compose {
+    &-file {
+        &-choose {
+            padding: 30px 0 30px;
+            border: 1.5px dashed $primary-color;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        &-input {
+            display: none;
+        }
+        &-text {
+            color: $primary-color;
+        }
+    }
+
+    &-head {
+        font-size: 14px;
+        color: $primary-color;
+    }
+
+    &-questions {
+        height: 144px;
+        border: 1.5px solid $primary-color;
+        border-radius: 4px;
+    }
+
+    &-options {
+        &-wrapper {
+            cursor: pointer;
+        }
+        &-space {
+            border: 1.5px solid $primary-color;
+            border-radius: 4px;
+            height: 41px;
+            margin-top: -10px;
+
+            &-answer {
+                border-radius: 4px;
+                background-color: #31D283;
+                height: 41px;
+                border: none;
+                margin-top: -10px;
+            }
+        }
+    }
+
+    &-btn {
+        margin-top: 52px;
+    }
+}
