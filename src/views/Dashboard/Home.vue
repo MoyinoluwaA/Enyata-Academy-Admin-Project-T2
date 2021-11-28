@@ -51,7 +51,7 @@
                     <p class="dashboard-create-text p-2 pb-0 fw-bold fs-6">Create Assessment</p>
                     <div class="text-center mb-4 d-flex flex-column justify-content-center">    
                         <p class="fs-6 fw-normal px-3 px-xl-5 mt-5">Create test question for an incoming academy students</p>
-                        <router-link :to="{ name: 'create-application' }">
+                        <router-link :to="{ name: 'compose-assessment' }">
                             <Button btnText='Create Assessment' btnStyle='btn--gray mt-2' />
                         </router-link>
                     </div>

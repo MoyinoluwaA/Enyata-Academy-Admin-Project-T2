@@ -41,7 +41,7 @@
 				</div>
 			</div>
 
-			<div class="btn-save-wrapper">
+			<div class="btn-save-wrapper mb-5">
 				<Button btnStyle="btn-save" btnText="Save" />
 			</div>
 		</form>
