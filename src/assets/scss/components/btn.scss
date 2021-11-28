@@ -4,6 +4,9 @@
         border: none;
         height: 41px;
         margin-bottom: 40px;
+        &:hover {
+            color: $primary-color
+        }
     }
 
     &-wrapper {
@@ -36,7 +39,9 @@
         border-radius: 3px;
         padding: 7px 46px 7px 46px;
         margin-top: 55px;
-
+        &:hover {
+            color: $grey-color
+        }
         &-wrapper {
             width: 30%;
             margin: 0 auto;
@@ -50,6 +55,9 @@
         @include media-breakpoint-up (md) {
             width: 124px;
         }
+        &:hover {
+            color: $grey-color
+        }
     }
 
     &-finish {
@@ -60,6 +68,9 @@
         border-radius: 4px;
         @include media-breakpoint-up (md) {
             width: 195px;
+        }
+        &:hover {
+            color: $primary-color
         }
     }
 }

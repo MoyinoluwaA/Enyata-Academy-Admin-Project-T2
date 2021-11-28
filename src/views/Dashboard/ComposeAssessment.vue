@@ -41,7 +41,7 @@
                 <Button btnText="Previous" btnStyle="btn-prev" />
                 <Button btnText="Next" btnStyle="btn-next" />
             </div>
-            <div class="mx-auto">
+            <div class="mx-auto mb-4">
                 <Button btnText="Finish" btnStyle="btn-finish text-center" />
             </div>
         </form>
