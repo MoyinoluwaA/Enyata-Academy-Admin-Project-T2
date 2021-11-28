@@ -4,5 +4,23 @@
         border: none;
         margin-left: -20px;
         cursor: pointer;
+        font-size: 26px;
+        @include media-breakpoint-up (lg) {
+            font-size: 43px;
+        }
+    }
+
+    &-wrapper {
+        overflow-x: scroll;
+
+        &::-webkit-scrollbar {
+            width: 10px;
+            height: 2.6px;
+            margin-top: 10px;
+            &-thumb{
+                background-color: $primary-color;
+                box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+            }
+        }
     }
 }

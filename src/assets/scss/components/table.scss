@@ -1,0 +1,25 @@
+.table {
+    &-wrapper {
+        width: 100%;
+        font-size: 14px;
+        font-weight: 400;
+        margin-top: 38px;
+    }
+    &-head {
+        @include button($primary-color, $white-color);
+    }
+
+    &-data {
+        cursor: pointer;
+        &:hover {
+            border-left: 12px solid $purple-color;
+            background: $white-color;
+            box-shadow: 0px 5px 15px rgba(33, 31, 38, 0.05);
+            border-radius: 8px 0px 0px 8px;
+        }
+    }
+
+    &-col {
+        white-space: nowrap;
+    }
+}
