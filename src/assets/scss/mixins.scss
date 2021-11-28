@@ -1,7 +1,7 @@
-@mixin button ($bg, $color) {
+@mixin button ($bg, $color, $hover-color:$color) {
     background-color: $bg;
     color: $color;
     &:hover {
-        color: $color;
+        color: $hover-color;
     }
 }
