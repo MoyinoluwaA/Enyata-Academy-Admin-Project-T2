@@ -1,0 +1,16 @@
+.offcanvas {
+    &-file {
+        cursor: pointer;
+        &-choose {
+            padding: 10px 0 10px;
+            border: 1.5px $primary-color;
+            border-radius: 6px;
+        }
+        &-input {
+            display: none;
+        }
+        &-text {
+            color: $primary-color;
+        }
+    }
+}

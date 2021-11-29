@@ -22,9 +22,19 @@
     &-dark{
         color: $primary-color;
     }
+    &-gray{
+        color: $deep-grey;
+    }
 }
-.input-bg-purple{
-    background-color: $white-color;
+.input-bg{
+    &-purple{
+        background-color: $purple-color;
+        color: $white-color;
+    }
+    &-white {
+        background-color: $white-color;
+        color: $primary-color;
+    }
 }
 #app {
     height: 100vh;
