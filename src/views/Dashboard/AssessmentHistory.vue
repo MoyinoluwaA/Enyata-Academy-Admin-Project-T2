@@ -2,7 +2,7 @@
       <div class="dashboard-container">
             <h2 class="dashboard-header">Assessment History</h2>
 
-            <div class="result-wrapper mb-4">
+            <div class="result-wrapper mb-5">
                 <table class="table-wrapper text-center">
                     <thead class="table-head">
                         <tr>
@@ -22,7 +22,7 @@
                             <td class="table-col p-3">{{ assessmentHistory.status }}</td>
                         </tr>
                     </tbody>
-                    </table>
+                </table>
             </div>
     </div>
 </template>
