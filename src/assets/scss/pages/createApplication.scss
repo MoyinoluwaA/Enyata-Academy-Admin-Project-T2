@@ -22,11 +22,11 @@
             width: 46%;
         }
     }
-    .link-input {
-        @include media-breakpoint-up (xl) {
-        margin-left: 23px;
-        }
-    }
+    // .link-input {
+    //     @include media-breakpoint-up (xl) {
+    //     margin-left: 23px;
+    //     }
+    // }
     .content {
         margin-top: 60px;
     }
