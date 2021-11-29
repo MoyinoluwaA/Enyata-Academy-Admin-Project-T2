@@ -1,4 +1,18 @@
 .btn {
+    box-shadow: none;
+    cursor: pointer;
+    border-radius: 4px;
+
+    &:focus {
+        box-shadow: none;
+    }
+    &-login {
+        background:$white-color;
+        border:none;
+        height: 48px;
+        color: $purple-color;
+        font-weight: 600;
+    }
     &--gray {
         @include button($deep-grey, $white-color, $primary-color);
         border: none;

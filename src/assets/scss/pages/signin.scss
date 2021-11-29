@@ -1,0 +1,23 @@
+.sign-in {
+    background-color: $purple-color;
+    height: 100%;  
+
+    .loginImage{
+        mix-blend-mode: color-dodge;
+        display: none;
+        @include media-breakpoint-up (xl){
+            display: block;
+        }
+    }
+}
+.signInBody {
+    @include media-breakpoint-up (xl) {
+        width: 100%;
+    }
+}
+.form-control {
+    background-color: $purple-color$im;
+}
+#app {
+    height: 100vh;
+}
