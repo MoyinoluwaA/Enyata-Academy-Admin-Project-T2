@@ -1,0 +1,33 @@
+.input-bg-white{
+    background-color: $purple-color;
+    border-color:$primary-color;
+    border-width: 1.5px;
+}
+.create-app {
+    margin-top: 101px;
+    @include media-breakpoint-up (xl) {
+        margin-left:40px ;
+    }
+
+    .file-choose-height{
+        height: 108px;
+        padding:40px 0 40px;
+        width: 87%;
+        margin: 0 auto;
+        @include media-breakpoint-up (md) {
+            width: 40%;
+            margin-left: 25px;
+        }
+        @include media-breakpoint-up (xl) {
+            width: 46%;
+        }
+    }
+    // .link-input {
+    //     @include media-breakpoint-up (xl) {
+    //     margin-left: 23px;
+    //     }
+    // }
+    .content {
+        margin-top: 60px;
+    }
+}
