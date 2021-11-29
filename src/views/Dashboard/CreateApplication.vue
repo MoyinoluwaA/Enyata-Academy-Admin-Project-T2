@@ -42,7 +42,7 @@
             </div>
             <div class="row justify-content-center">
                 <div class=" row btn col-md-6 col-sm-12 mt-3">
-                    <button class="btn btn-purple mt-4" type="submit">Submit</button>
+                    <button class="btn btn-login-purple mt-4" type="submit">Submit</button>
                 </div>
             </div>
         </div>

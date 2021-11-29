@@ -20,12 +20,11 @@
         }
         @include media-breakpoint-up (xl) {
             width: 46%;
-            margin-left: 25px;
         }
     }
     .link-input {
         @include media-breakpoint-up (xl) {
-        margin-left: 26px;
+        margin-left: 23px;
         }
     }
     .content {
