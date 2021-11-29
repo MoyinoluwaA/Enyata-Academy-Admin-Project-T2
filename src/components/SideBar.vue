@@ -52,6 +52,13 @@
                                         </div>
 
                                         <div class="dashboard-menus">
+                                            <router-link class="dashboard-link" :to="{ name: 'assessment-history' }">
+                                                <img class="dashboard-img" src="../assets/icons/history-assessment.svg" alt="history"/>
+                                                <span class="dashboard-menu">Assessment History</span>
+                                            </router-link>
+                                        </div>
+
+                                        <div class="dashboard-menus">
                                             <router-link class="dashboard-link" :to="{ name: 'result' }">
                                                 <img class="dashboard-img" src="../assets/icons/result-icon.svg" alt="create"/>
                                                 <span class="dashboard-menu">Result</span>
@@ -110,6 +117,13 @@
                         <router-link class="dashboard-link" :to="{ name: 'compose-assessment' }">
                             <img class="dashboard-img" src="../assets/icons/compose-assessment-icon.svg" alt="create"/>
                             <span class="dashboard-menu">Compose Assessment</span>
+                        </router-link>
+                    </div>
+
+                    <div class="dashboard-menus">
+                        <router-link class="dashboard-link" :to="{ name: 'assessment-history' }">
+                            <img class="dashboard-img" src="../assets/icons/history-assessment.svg" alt="history"/>
+                            <span class="dashboard-menu">Assessment History</span>
                         </router-link>
                     </div>
 
