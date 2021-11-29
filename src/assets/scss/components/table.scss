@@ -3,10 +3,11 @@
         width: 100%;
         font-size: 14px;
         font-weight: 400;
-        margin-top: 38px;
     }
     &-head {
         @include button($primary-color, $white-color);
+        position: sticky;
+        top: 0;
     }
 
     &-data {

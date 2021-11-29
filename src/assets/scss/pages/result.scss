@@ -12,9 +12,15 @@
 
     &-wrapper {
         overflow-x: scroll;
+        margin-top: 40px;
+        position: relative;
+        height: 600px;
+        overflow-y: scroll;
+        box-shadow: 0px 5px 15px rgba(33, 31, 38, 0.05);
+        border-radius: 8px;
 
         &::-webkit-scrollbar {
-            width: 10px;
+            width: 2.6px;
             height: 2.6px;
             margin-top: 10px;
             &-thumb{

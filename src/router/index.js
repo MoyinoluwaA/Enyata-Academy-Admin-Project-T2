@@ -37,6 +37,11 @@ const routes = [
 				component: () => import('../views/Dashboard/ComposeAssessment.vue')
 			},
 			{
+				path: 'assessment-history',
+				name: 'assessment-history',
+				component: () => import('../views/Dashboard/AssessmentHistory.vue')
+			},
+			{
 				path: 'result',
 				name: 'result',
 				component: () => import('../views/Dashboard/Result.vue')

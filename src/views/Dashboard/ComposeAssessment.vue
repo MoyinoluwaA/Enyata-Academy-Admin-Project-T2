@@ -12,7 +12,7 @@
 
             <div class="form-group mt-4">
                 <label for="exampleFormControlTextarea1 compose-head fw-normal">Questions</label>
-                <textarea class="form-control compose-questions mt-1" rows="3"></textarea>
+                <textarea class="form-control compose-questions mt-1 mb-4" rows="4"></textarea>
             </div>
 
             <div class="compose-options-wrapper mt-4 row">
