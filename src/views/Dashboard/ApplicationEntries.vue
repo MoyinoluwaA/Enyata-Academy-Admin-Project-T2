@@ -7,7 +7,7 @@
             </select>
             <p class="settings-sub-header mb-4">Comprises of all that applied for batch 2</p>
 
-            <div class="result-wrapper">
+            <div class="result-wrapper px-2">
                 <table class="table-wrapper text-center mb-4">
                     <thead class="table-head">
                         <tr>
@@ -24,13 +24,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                         <tr class="table-data mb-4" v-for="applicant in applicants" :key="applicant.id">
-                            <td class="table-col p-3">{{ applicant.name }}</td>
-                            <td class="table-col p-3">{{ applicant.email }}</td>
-                            <td class="table-col p-3">{{ applicant.dob }}</td>
-                            <td class="table-col p-3">{{ applicant.address }}</td>
-                            <td class="table-col p-3">{{ applicant.university }}</td>
-                            <td class="table-col p-3">{{ applicant.cgpa }}</td>
+                         <tr class="table-data mt-4" v-for="applicant in applicants" :key="applicant.id">
+                            <td class="table-col p-3 mb-2">{{ applicant.name }}</td>
+                            <td class="table-col p-3 mb-2">{{ applicant.email }}</td>
+                            <td class="table-col p-3 mb-2">{{ applicant.dob }}</td>
+                            <td class="table-col p-3 mb-2">{{ applicant.address }}</td>
+                            <td class="table-col p-3 mb-2">{{ applicant.university }}</td>
+                            <td class="table-col p-3 mb-2">{{ applicant.cgpa }}</td>
                         </tr>
                     </tbody>
                     </table>
