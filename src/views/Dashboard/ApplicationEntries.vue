@@ -23,25 +23,118 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody>
-                         <tr class="table-data mt-4" v-for="applicant in applicants" :key="applicant.id">
-                            <td class="table-col p-3 mb-2">{{ applicant.name }}</td>
-                            <td class="table-col p-3 mb-2">{{ applicant.email }}</td>
-                            <td class="table-col p-3 mb-2">{{ applicant.dob }}</td>
-                            <td class="table-col p-3 mb-2">{{ applicant.address }}</td>
-                            <td class="table-col p-3 mb-2">{{ applicant.university }}</td>
-                            <td class="table-col p-3 mb-2">{{ applicant.cgpa }}</td>
-                        </tr>
-                    </tbody>
-                    </table>
+                     <tbody>
+                            <tr class="table-data mt-4" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" v-for="applicant in applicants" :key="applicant.id">
+                                <td class="table-col p-3 mb-2">{{ applicant.name }}</td>
+                                <td class="table-col p-3 mb-2">{{ applicant.email }}</td>
+                                <td class="table-col p-3 mb-2">{{ applicant.dob }}</td>
+                                <td class="table-col p-3 mb-2">{{ applicant.address }}</td>
+                                <td class="table-col p-3 mb-2">{{ applicant.university }}</td>
+                                <td class="table-col p-3 mb-2">{{ applicant.cgpa }}</td>
+                            </tr>
+                            <div class="offcanvas offcanvas-end p-4" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                <div class="text-start mt-4">
+                                    <img src='../../assets/images/offcanvasImg.png' alt='applicant-Image'>
+                                </div>
+                                <div class=" ps-0 mt-4 offcanvas-header">
+                                    <h6 class='mb-0' id="offcanvasRightLabel">Personal Details</h6>
+                                </div>
+                                <hr class="mb-0 mt-0"/>
+                                <div class="offcanvas-body mt-4">
+                                    <form class="row text-start">
+                                        <formInput
+                                            inputBoxStyle=' col-md-6'
+                                            inputStyle='border-1 input-bg-white'
+                                            type='text'
+                                            identifier='name'
+                                            label='Name'
+                                            labelStyle='form-label-gray'
+                                            v-model="applicants.name"
+                                        />
+                                        <formInput
+                                            inputBoxStyle='col-md-6 '
+                                            inputStyle='border-1 input-bg-white'
+                                            type='email'
+                                            identifier='email'
+                                            label='Email'
+                                            labelStyle='form-label-gray'
+                                            v-model="applicants.email"
+                                        />
+                                        <formInput
+                                            inputBoxStyle='col-md-6 '
+                                            inputStyle='border-1 input-bg-white'
+                                            type='text'
+                                            identifier='address'
+                                            label='Address'
+                                            labelStyle='form-label-gray'
+                                            v-model="applicants.address"
+                                        />
+                                        <formInput
+                                            inputBoxStyle='col-md-6 '
+                                            inputStyle='border-1 input-bg-white'
+                                            type='text'
+                                            identifier='university'
+                                            label='University'
+                                            labelStyle='form-label-gray'
+                                            v-model="applicants.university"
+                                        />
+                                        <formInput
+                                            inputBoxStyle='col-md-6 '
+                                            inputStyle='border-1 input-bg-white'
+                                            type='text'
+                                            identifier='courseOfStudy'
+                                            label='Course of study'
+                                            labelStyle='form-label-gray'
+                                            v-model="applicants.courseOfStudy"
+                                        />
+                                        <formInput
+                                            inputBoxStyle='col-md-6 '
+                                            inputStyle='border-1 input-bg-white'
+                                            type='date'
+                                            identifier='dateOfBirth'
+                                            label='Date of birth'
+                                            labelStyle='form-label-gray'
+                                            v-model="applicants.dob"
+                                        />
+                                        <formInput
+                                            inputBoxStyle='col-md-6 '
+                                            inputStyle='border-1 input-bg-white'
+                                            type='number'
+                                            identifier='cgpa'
+                                            label='CGPA'
+                                            labelStyle='form-label-gray'
+                                            v-model="applicants.cgpa"
+                                        />
+                                        <label for="formFile" class="form-label col-md-6 col-12">
+                                            <p><span class="form-label-gray">CV</span><br> <span class="text-center">+ Choose file</span></p></label>
+                                            <input class="form-control compose-file-input" type="file" id="formFile">
+                                            <!-- <span class="compose-file-text">+ Choose file</span> -->
+                                        <!--<label class="offcanvas-file-choose col-md-6 col-12 text-center mt-4">
+                                            <input class="compose-file-input" type="file" /> 
+                                            <span class="compose-file-text">+ Choose file</span>
+                                        </label> -->
+                                    </form>
+                                    <div class="mt-3">
+                                        <button type="button" class="btn btn-login-purple">Approve</button>
+                                        <button type="button" class="btn btn-login-decline ms-4">Decline</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </tbody>
+                </table>
             </div>
     </div>
 </template>
 
 <script>
+import formInput from '@/components/Input.vue'
 
 export default {
     name: 'Result',
+    components: {
+        formInput
+    }, 
     data() {
         return {
             applicants: [
@@ -51,6 +144,7 @@ export default {
                     dob: '12/09/19 - 22',
                     address: '3 Sabo Ave, Yaba, Lagos',
                     university: 'University of Nigeria',
+                    courseOfStudy:'',
                     cgpa: '5.0',
                 },
                 {
@@ -59,6 +153,7 @@ export default {
                     dob: '12/09/19 - 22',
                     address: '3 Sabo Ave, Yaba, Lagos',
                     university: 'University of Nigeria',
+                    courseOfStudy:'',
                     cgpa: '5.0',
                 },
                 {
@@ -67,6 +162,7 @@ export default {
                     dob: '12/09/19 - 22',
                     address: '3 Sabo Ave, Yaba, Lagos',
                     university: 'University of Nigeria',
+                    courseOfStudy:'',
                     cgpa: '5.0',
                 }
             ]

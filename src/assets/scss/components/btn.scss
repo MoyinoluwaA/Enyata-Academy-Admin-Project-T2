@@ -15,6 +15,10 @@
         &-purple{
             @include button($purple-color,$white-color)
         }
+        &-decline{
+            @include button($white-color, $primary-color);
+            border: 1px solid $grey-color;
+        }
     }
     &--gray {
         @include button($deep-grey, $white-color, $primary-color);

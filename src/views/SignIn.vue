@@ -8,7 +8,7 @@
                 <form class="action">
                     <formInput
                         inputBoxStyle='col-md-6 offset-md-3'
-                        inputStyle='border-2 border-white input-bg-white'
+                        inputStyle='border-2 border-white input-bg-purple'
                         type='email'
                         identifier='email'
                         label='Email Address'
@@ -17,7 +17,7 @@
                     />
                     <formInput
                         inputBoxStyle='col-md-6 offset-md-3'
-                        inputStyle='border-2 border-white input-bg-white'
+                        inputStyle='border-2 border-white input-bg-purple'
                         type='password'
                         identifier='password'
                         labelStyle='form-label-white'
