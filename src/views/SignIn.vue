@@ -8,17 +8,19 @@
                 <form class="action">
                     <formInput
                         inputBoxStyle='col-md-6 offset-md-3'
-                        inputStyle='border-2'
+                        inputStyle='border-2 border-white input-bg-white'
                         type='email'
                         identifier='email'
                         label='Email Address'
+                        labelStyle='form-label-white'
                         v-model="admin.email"
                     />
                     <formInput
                         inputBoxStyle='col-md-6 offset-md-3'
-                        inputStyle='border-2'
+                        inputStyle='border-2 border-white input-bg-white'
                         type='password'
                         identifier='password'
+                        labelStyle='form-label-white'
                         label='Password'
                         v-model="admin.password"
                     />

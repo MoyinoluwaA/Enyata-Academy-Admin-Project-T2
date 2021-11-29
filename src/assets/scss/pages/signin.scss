@@ -15,8 +15,16 @@
         width: 100%;
     }
 }
-.form-control {
-    background-color: $purple-color$im;
+.form-label{
+    &-white{
+        color: $white-color;
+    }
+    &-dark{
+        color: $primary-color;
+    }
+}
+.input-bg-purple{
+    background-color: $white-color;
 }
 #app {
     height: 100vh;

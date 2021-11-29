@@ -1,7 +1,7 @@
 <template>
     <div class="col-12 form-input mb-4" :class="inputBoxStyle">
-        <label :for="identifier" class="mb-2 form-label text-white" :class="labelStyle">{{label}}</label>
-        <input :type="type" class="form-control text-white" :class="inputStyle" id="input-box" :name="identifier" />
+        <label :for="identifier" class="mb-2 form-label" :class="labelStyle">{{label}}</label>
+        <input :type="type" class="form-control text-white" :class="inputStyle"  :name="identifier" />
     </div>
 </template>
 

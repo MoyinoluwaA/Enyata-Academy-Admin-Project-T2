@@ -12,6 +12,9 @@
         height: 48px;
         font-weight: 600;
     }
+    &-purple{
+        @include button($purple-color,$white-color)
+    }
     &--gray {
         @include button($deep-grey, $white-color, $primary-color);
         border: none;
