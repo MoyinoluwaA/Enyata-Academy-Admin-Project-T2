@@ -7,10 +7,9 @@
         box-shadow: none;
     }
     &-login {
-        background:$white-color;
+        @include button($white-color,$purple-color);
         border:none;
         height: 48px;
-        color: $purple-color;
         font-weight: 600;
     }
     &--gray {

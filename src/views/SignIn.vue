@@ -37,7 +37,6 @@
 import formInput from '@/components/Input.vue'
 
 export default {
-    name: 'SignIn',
 	components: {
             formInput,
 	},
