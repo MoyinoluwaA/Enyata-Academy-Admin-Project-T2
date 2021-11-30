@@ -65,6 +65,16 @@ const routes = [
 				]
 			}
 		]
+	},
+	{
+		path: '/user-not-found',
+		name: 'UserNotFound',
+		component: () => import(/* webpackChunkName: "about" */ '../views/UserNotFound')
+	},
+	{
+		path: '/admin-not-found',
+		name: 'AdminNotFound',
+		component: () => import(/* webpackChunkName: "about" */ '../views/AdminNotFound')
 	}
 ]
 
