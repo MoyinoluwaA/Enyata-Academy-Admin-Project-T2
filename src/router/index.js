@@ -67,9 +67,9 @@ const routes = [
 		]
 	},
 	{
-		path: '/admin-not-found',
-		name: 'AdminNotFound',
-		component: () => import(/* webpackChunkName: "about" */ '../views/AdminNotFound')
+		path: '*',
+		name: 'PageNotFound',
+		component: () => import(/* webpackChunkName: "about" */ '../views/PageNotFound')
 	}
 ]
 
