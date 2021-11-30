@@ -65,6 +65,11 @@ const routes = [
 				]
 			}
 		]
+	},
+	{
+		path: '*',
+		name: 'PageNotFound',
+		component: () => import(/* webpackChunkName: "about" */ '../views/PageNotFound')
 	}
 ]
 
