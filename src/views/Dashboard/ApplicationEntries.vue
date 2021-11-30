@@ -1,5 +1,5 @@
 <template>
-      <div class="dashboard-container">
+        <div class="dashboard-container">
             <select class="form-select form-select-lg dashboard-header result-header" aria-label=".form-select-lg example">
                 <option value="1" >Entries - Batch 1</option>
                 <option selected class="">Entries - Batch 2</option>
@@ -24,15 +24,15 @@
                         </tr>
                     </thead>
                      <tbody>
-                            <tr class="table-data mt-4" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" v-for="applicant in applicants" :key="applicant.id">
-                                <td class="table-col p-3 mb-2">{{ applicant.name }}</td>
-                                <td class="table-col p-3 mb-2">{{ applicant.email }}</td>
-                                <td class="table-col p-3 mb-2">{{ applicant.dob }}</td>
-                                <td class="table-col p-3 mb-2">{{ applicant.address }}</td>
-                                <td class="table-col p-3 mb-2">{{ applicant.university }}</td>
-                                <td class="table-col p-3 mb-2">{{ applicant.cgpa }}</td>
-                            </tr>
-                            <div class="offcanvas offcanvas-end p-4" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                        <tr class="table-data mt-4" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" v-for="applicant in applicants" :key="applicant.id">
+                            <td class="table-col p-3 mb-2">{{ applicant.name }}</td>
+                            <td class="table-col p-3 mb-2">{{ applicant.email }}</td>
+                            <td class="table-col p-3 mb-2">{{ applicant.dob }}</td>
+                            <td class="table-col p-3 mb-2">{{ applicant.address }}</td>
+                            <td class="table-col p-3 mb-2">{{ applicant.university }}</td>
+                            <td class="table-col p-3 mb-2">{{ applicant.cgpa }}</td>
+                        </tr>
+                        <div class="offcanvas offcanvas-end p-4" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
                                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                                 <div class="text-start mt-4">
                                     <img src='../../assets/images/offcanvasImg.png' alt='applicant-Image'>
@@ -107,33 +107,35 @@
                                             v-model="applicants.cgpa"
                                         />
                                         <label for="formFile" class="form-label col-md-6 col-12">
-                                            <p><span class="form-label-gray">CV</span><br> <span class="text-center">+ Choose file</span></p></label>
-                                            <input class="form-control compose-file-input" type="file" id="formFile">
-                                            <!-- <span class="compose-file-text">+ Choose file</span> -->
-                                        <!--<label class="offcanvas-file-choose col-md-6 col-12 text-center mt-4">
-                                            <input class="compose-file-input" type="file" /> 
-                                            <span class="compose-file-text">+ Choose file</span>
-                                        </label> -->
+                                        <p><span class="form-label-gray">CV</span><br><span class="text-center">+ Choose file</span></p></label>
+                                        <input class="form-control compose-file-input" type="file" id="formFile">
                                     </form>
                                     <div class="mt-3">
-                                        <button type="button" class="btn btn-login-purple">Approve</button>
-                                        <button type="button" class="btn btn-login-decline ms-4">Decline</button>
+                                        <button type="button" class="btn btn-login-purple" data-bs-toggle="modal" data-bs-target="#exampleModal">Approve</button>
+                                        <button type="button" class="btn btn-login-decline ms-4" data-bs-toggle="modal" data-bs-target="#exampleModal2">Decline</button>
                                     </div>
                                 </div>
-                            </div>
-                        </tbody>
+                        </div>
+                    </tbody>
                 </table>
             </div>
-    </div>
+            <ApproveModal/>
+            <DeclineModal/>
+        </div>
 </template>
 
 <script>
 import formInput from '@/components/Input.vue'
+import ApproveModal from '../../components/ApproveModal.vue'
+import DeclineModal from '../../components/DeclineModal.vue'
+
+
 
 export default {
-    name: 'Result',
     components: {
-        formInput
+        formInput,
+        ApproveModal,
+        DeclineModal
     }, 
     data() {
         return {
