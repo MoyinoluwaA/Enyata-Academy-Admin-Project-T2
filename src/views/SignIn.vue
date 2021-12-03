@@ -97,7 +97,7 @@ export default {
                         content
                     })
                 }
-                // this.clearForm()
+                this.clearForm()
              }
          }, 
          clearForm() {
