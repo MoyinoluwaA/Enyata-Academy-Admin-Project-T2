@@ -14,7 +14,8 @@ export default {
         label: String,
         labelStyle: String,
         inputStyle: String,
-        inputBoxStyle: String
+        inputBoxStyle: String,
+        formStyle: String
     },
 }
 </script>

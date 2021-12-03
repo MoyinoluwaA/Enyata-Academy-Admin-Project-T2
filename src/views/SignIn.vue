@@ -5,27 +5,35 @@
                     <img src='../assets/images/enyataLogo.svg' alt="enyata-logo" class="enyata-logo" />
                     <h4 class="text-center fst-italic mt-4 mb-4 pb-3 text-white">Admin Log In</h4>
                 </div>
-                <form class="action">
-                    <formInput
+                <form class="action" @submit.prevent="signIn()">
+                    <loginInput
                         inputBoxStyle='col-md-6 offset-md-3'
-                        inputStyle='border-2 border-white input-bg-purple'
+                        :inputStyle="isError.email"
                         type='email'
                         identifier='email'
                         label='Email Address'
                         labelStyle='form-label-white'
-                        v-model="admin.email"
+                        v-model.lazy.trim="admin.email"
+                        @input="admin.email.match(emailRegex) 
+                            ? isError.email = 'is-valid' 
+                            : isError.email = 'is-invalid'"
+                        invalidMsg='Enter a valid email address'
                     />
-                    <formInput
+                    <loginInput
                         inputBoxStyle='col-md-6 offset-md-3'
-                        inputStyle='border-2 border-white input-bg-purple'
+                        :inputStyle="isError.password"
                         type='password'
                         identifier='password'
                         labelStyle='form-label-white'
                         label='Password'
-                        v-model="admin.password"
+                        v-model.lazy.trim="admin.password"
+                        @input="admin.password.match(passwordRegex) 
+                            ? isError.password = 'is-valid' 
+                            : isError.password = 'is-invalid'"
+                        invalidMsg='Password should contain an uppercase, lowercase and digit'
                     />
                     <div class="d-flex flex-column justify-content-center align-items-center">
-                        <button class="btn col-md-6 col-12 btn-login mt-3" id="submit-btn" type="submit">Sign In</button>
+                        <button class="btn col-md-6 col-12 btn-login mt-3" id="submit-btn" type="submit" :disabled='isDisabled'>Sign In</button>
                     </div>
                 </form>
         </section>
@@ -36,19 +44,67 @@
 </template>
 
 <script>
-import formInput from '@/components/Input.vue'
+import loginInput from '@/components/LoginInput.vue'
+import { emailRegex, passwordRegex } from '@/helpers/variables'
+import AuthService from '@/services/auth'
+import { mapActions } from 'vuex'
 
 export default {
 	components: {
-            formInput,
+        loginInput,
 	},
      data() {
         return {
             admin: {
                 email: '',
                 password: '',
-            }
+            },
+            isError:{},
+            emailRegex,
+            passwordRegex
         }
+     },
+     computed: {
+        isDisabled() {
+            return (
+                (!(this.admin.email && this.admin.password)) ||
+                this.isError.email === 'is-invalid' ||
+                this.isError.password === 'is-invalid'
+            )
+        }
+    },
+    methods: {
+        ...mapActions(['handleLogIn']),
+        async signIn() {
+            try {
+                const res = await AuthService.loginAdmin({...this.admin})
+                if (res.code === 200) {
+                    this.handleLogIn(res.data.token)
+                    this.$router.push({ name: 'Dashboard' })
+                    this.clearForm()
+                }
+            }catch(error) {
+                 if (error.response.data.code === 401) {
+                    let content
+                    if (error.response.data.message === 'Invalid credentials') {
+                        content = 'Invalid Credentials'
+                    } else {
+                        content = 'Admin not verified'
+                    }
+                    this.$dtoast.pop({
+                        preset: "error",
+                        heading: 'Error occured while logging in',
+                        content
+                    })
+                }
+                // this.clearForm()
+             }
+         }, 
+         clearForm() {
+             this.admin.email= '',
+             this.admin.password= '',
+             this.isError= {}
+         }
      }
 }
 </script>

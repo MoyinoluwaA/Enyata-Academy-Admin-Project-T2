@@ -1,0 +1,49 @@
+.form-input {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.inputStyle {
+    border-color:#BDBDBD ;
+}
+
+.enyata-logo {
+    margin-top: 8vh;
+}
+
+.form-control {
+    height: 48px;
+    border: 1.5px solid $primary-color;
+    &:focus {
+        box-shadow: none;
+        border-color: unset;
+    }
+    &.is-valid,
+    &.is-invalid {
+        &:focus {
+            box-shadow: none;
+        } 
+    }
+}
+
+.input {
+    &-date {
+        color: $grey-color;
+        font-size: 10px;
+    }
+    &-file {
+        opacity: 0;
+        width: 100%;
+        height: 200px;
+        position: absolute;
+        cursor: pointer;
+    }
+}
+
+.invalid-feedback {
+    right: 40px;
+    bottom: 0;
+    font-size: 11px;
+    text-align: end;
+}
