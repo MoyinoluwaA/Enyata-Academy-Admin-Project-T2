@@ -20,6 +20,9 @@
             border: 1px solid $grey-color;
         }
     }
+    &-offcanvas {
+        width: 125px;
+    }
     &--gray {
         @include button($deep-grey, $white-color, $primary-color);
         border: none;

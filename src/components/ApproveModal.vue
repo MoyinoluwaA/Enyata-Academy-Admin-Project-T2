@@ -9,8 +9,8 @@
                     <p class="text-center w-75 mx-auto">Are you sure you want to approve this application?</p>
                 </div>
                 <div class="row justify-content-center mb-5">
-                    <button type="button" class="btn btn-login-purple col-3">Yes</button>
-                    <button type="button" class="btn col-3 ms-3">No</button>
+                    <button type="button" class="btn btn-login-purple col-3" @click="$emit('click')">Yes</button>
+                    <button type="button" class="btn col-3 ms-3" data-bs-dismiss="modal">No</button>
                 </div>
             </div>
         </div>
@@ -20,10 +20,5 @@
 <script>
 export default {
     name:'ApproveModal'
-
 }
 </script>
-
-<style>
-
-</style>

@@ -87,9 +87,11 @@
                     </a>
                 </div>
             </form>
-            <div class="mt-3">
-                <button type="button" class="btn btn-login-purple" data-bs-toggle="modal" data-bs-target="#exampleModal">Approve</button>
-                <button type="button" class="btn btn-login-decline ms-4" data-bs-toggle="modal" data-bs-target="#exampleModal2">Decline</button>
+            <p v-if="applicant.status === 'approved'" class="mt-3 fw-bold fs-4 text-center text-success">Approved</p>
+            <p v-else-if="applicant.status === 'declined'" class="mt-3 fw-bold fs-4 text-center text-danger">Declined</p>
+            <div v-else class="mt-3 text-center">
+                <button type="button" class="btn btn-login-purple btn-offcanvas" data-bs-toggle="modal" data-bs-target="#exampleModal">Approve</button>
+                <button type="button" class="btn btn-login-decline btn-offcanvas ms-4" data-bs-toggle="modal" data-bs-target="#exampleModal2">Decline</button>
             </div>
         </div>
     </div>
