@@ -51,7 +51,7 @@ import { mapActions } from 'vuex'
 
 export default {
 	components: {
-            loginInput,
+        loginInput,
 	},
      data() {
         return {
@@ -65,25 +65,25 @@ export default {
         }
      },
      computed: {
-         isDisabled() {
-             return (
-                 (!(this.admin.email && this.admin.password)) ||
-                  this.isError.email === 'is-invalid' ||
-                  this.isError.password === 'is-invalid'
-             )
-         }
-     },
-     methods: {
-         ...mapActions(['handleLogIn']),
-         async signIn() {
-             try {
-                 const res = await AuthService.loginAdmin({...this.admin})
-                 if (res.code === 200) {
-                     this.handleLogIn(res.data.token)
-
+        isDisabled() {
+            return (
+                (!(this.admin.email && this.admin.password)) ||
+                this.isError.email === 'is-invalid' ||
+                this.isError.password === 'is-invalid'
+            )
+        }
+    },
+    methods: {
+        ...mapActions(['handleLogIn']),
+        async signIn() {
+            try {
+                const res = await AuthService.loginAdmin({...this.admin})
+                if (res.code === 200) {
+                    this.handleLogIn(res.data.token)
+                    this.$router.push({ name: 'Dashboard' })
+                    this.clearForm()
                 }
-                // this.clearForm()
-             }catch(error) {
+            }catch(error) {
                  if (error.response.data.code === 401) {
                     let content
                     if (error.response.data.message === 'Invalid credentials') {

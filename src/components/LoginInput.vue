@@ -16,6 +16,7 @@ export default {
         identifier: String,
         type: String,
         label: String,
+        value: String,
         labelStyle: String,
         inputStyle: String,
         inputBoxStyle: String,
