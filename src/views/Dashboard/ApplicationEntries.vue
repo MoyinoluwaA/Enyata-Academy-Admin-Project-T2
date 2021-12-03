@@ -38,8 +38,8 @@
                     </tbody>
                 </table>
             </div>
-            <ApproveModal/>
-            <DeclineModal/>
+            <ApproveModal @click="updateApplicantStatus('approved')" />
+            <DeclineModal  @click="updateApplicantStatus('declined')" />
         </div>
 </template>
 
@@ -91,6 +91,18 @@ export default {
             this.$route.query.applicantId = id
             const [ applicant ] = this.applicants.filter(applicant => applicant.id === id)
             this.applicant = applicant
+        },
+        async updateApplicantStatus(status) {
+            try {
+                await ApplicationService.updateApplicantStatus(this.applicant.id, status)
+            } catch (error) {
+                this.$dtoast.pop({
+                    preset: "error",
+                    heading: 'Error occured',
+                    content: error.response.data.message
+                })
+            }
+            this.$router.push({ name: 'application-entries' })
         }
     }
 }

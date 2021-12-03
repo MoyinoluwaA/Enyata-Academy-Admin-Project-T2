@@ -6,8 +6,14 @@ const ApplicationService = () => {
         return response.data
     }
 
+    const updateApplicantStatus = async (applicantId, status) => {
+        const response = await api.put(`/applications/applicants/${applicantId}`, {status})
+        return response
+    }
+
     return {
-        getApplicantByBatch
+        getApplicantByBatch,
+        updateApplicantStatus
     }
 }
 
