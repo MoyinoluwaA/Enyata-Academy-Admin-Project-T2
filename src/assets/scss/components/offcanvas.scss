@@ -1,4 +1,7 @@
 .offcanvas {
+    @include media-breakpoint-up(lg) {
+        width: 600px;
+    }
     &-file {
         cursor: pointer;
         &-choose {
@@ -12,5 +15,10 @@
         &-text {
             color: $primary-color;
         }
+    }
+
+    .applicant-img {
+        width: 179px;
+        height: 179px;
     }
 }
