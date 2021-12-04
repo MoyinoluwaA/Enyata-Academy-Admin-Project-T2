@@ -11,9 +11,15 @@ const ApplicationService = () => {
         return response
     }
 
+    const getApplicationStats = async () => {
+        const response = await api.get('/applications/stats')
+        return response
+    }
+
     return {
         getApplicantByBatch,
-        updateApplicantStatus
+        updateApplicantStatus,
+        getApplicationStats
     }
 }
 
