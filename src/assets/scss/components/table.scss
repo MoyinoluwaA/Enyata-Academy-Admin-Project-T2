@@ -1,4 +1,8 @@
 .table {
+    @include media-breakpoint-up(xl) {
+        table-layout: fixed;
+        overflow-x: hidden;
+    }
     &-wrapper {
         width: 100%;
         font-size: 14px;
@@ -6,23 +10,29 @@
     }
     &-head {
         @include button($primary-color, $white-color);
-        position: sticky;
-        top: 0;
+        th:last-of-type {
+            width: 100px;
+        }
     }
 
     &-data {
         cursor: pointer;
         border-radius: 20px;
-        margin-top: 20px;
         &:hover {
             border-left: 6px solid $purple-color;
             background: $white-color;
             box-shadow: 0px 5px 15px rgba(33, 31, 38, 0.05);
             border-radius: 8px;
         }
+
+        td {
+            white-space: nowrap;
+            overflow-x: hidden;
+        }
     }
 
     &-col {
         white-space: nowrap;
+        pointer-events: none;
     }
 }

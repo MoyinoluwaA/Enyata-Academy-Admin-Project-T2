@@ -1,173 +1,108 @@
 <template>
         <div class="dashboard-container">
             <select class="form-select form-select-lg dashboard-header result-header" aria-label=".form-select-lg example">
-                <option value="1" >Entries - Batch 1</option>
-                <option selected class="">Entries - Batch 2</option>
-                <option value="3">Entries - Batch 3</option>
+                <option selected value="1" >Entries - Batch 1</option>
             </select>
-            <p class="settings-sub-header mb-4">Comprises of all that applied for batch 2</p>
+            <p class="settings-sub-header mb-4">Comprises of all that applied for batch {{ batchId }}</p>
 
-            <div class="result-wrapper px-2">
-                <table class="table-wrapper text-center mb-4">
+            <p v-if='error' class="fs-2 mt-4">An error occurred while fetching applicants data</p>
+            <div v-else class="table-responsive">
+                <table class="table table-borderless my-4">
                     <thead class="table-head">
-                        <tr>
-                            <th class="table-col p-3">Name</th>
-                            <th class="table-col p-3">Email</th>
-                            <th class="table-col p-3">Dob - Age 
-                                <img class="table-sorting ms-3" src="../../../src/assets/icons/sorting.svg" alt="sort" />
+                        <tr class="text-center">
+                            <th scope="col" class="py-3">Name</th>
+                            <th scope="col" class="py-3">Email</th>
+                            <th scope="col" class="py-3">Dob - Age 
+                                <img class="table-sorting ms-1" src="@/assets/icons/sorting.svg" alt="sort" />
                             </th>
-                            <th class="table-col p-3">Address</th>
-                            <th class="table-col p-3">University</th>
-                            <th class="table-col p-3">CGPA 
-                                <img class="table-sorting ms-3" src="../../../src/assets/icons/sorting.svg" alt="sort" />
+                            <th scope="col" class="py-3">Address</th>
+                            <th scope="col" class="py-3">University</th>
+                            <th scope="col" class="py-3 text-nowrap">CGPA 
+                                <img class="table-sorting ms-1" src="@/assets/icons/sorting.svg" alt="sort" />
                             </th>
                         </tr>
                     </thead>
-                     <tbody>
-                        <tr class="table-data mt-4" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" v-for="applicant in applicants" :key="applicant.id">
-                            <td class="table-col p-3 mb-2">{{ applicant.name }}</td>
-                            <td class="table-col p-3 mb-2">{{ applicant.email }}</td>
-                            <td class="table-col p-3 mb-2">{{ applicant.dob }}</td>
-                            <td class="table-col p-3 mb-2">{{ applicant.address }}</td>
-                            <td class="table-col p-3 mb-2">{{ applicant.university }}</td>
-                            <td class="table-col p-3 mb-2">{{ applicant.cgpa }}</td>
+                    <tbody>
+                        <p v-if='applicants === []' class="fs-3 fw-bold">There are no applicants yet. Check back later</p>
+                        <tr v-else class="table-data" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" @click="selectApplicant(applicant.id)"
+                            aria-controls="offcanvasRight" v-for="applicant in applicants" :key="applicant.id"
+                        >
+                            <td class="p-3 mb-2">{{ applicant.first_name }} {{ applicant.last_name }}</td>
+                            <td class="p-3 mb-2">{{ applicant.email }}</td>
+                            <td class="p-3 mb-2">{{ applicant.date_of_birth }} - {{ applicant.age }}</td>
+                            <td class="p-3 mb-2">{{ applicant.address }}</td>
+                            <td class="p-3 mb-2">{{ applicant.university }}</td>
+                            <td class="p-3 mb-2 text-center">{{ applicant.cgpa }}</td>
                         </tr>
-                        <div class="offcanvas offcanvas-end p-4" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-                                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                                <div class="text-start mt-4">
-                                    <img src='../../assets/images/offcanvasImg.png' alt='applicant-Image'>
-                                </div>
-                                <div class=" ps-0 mt-4 offcanvas-header">
-                                    <h6 class='mb-0' id="offcanvasRightLabel">Personal Details</h6>
-                                </div>
-                                <hr class="mb-0 mt-0"/>
-                                <div class="offcanvas-body mt-4">
-                                    <form class="row text-start">
-                                        <formInput
-                                            inputBoxStyle=' col-md-6'
-                                            inputStyle='border-1 input-bg-white'
-                                            type='text'
-                                            identifier='name'
-                                            label='Name'
-                                            labelStyle='form-label-gray'
-                                            v-model="applicants.name"
-                                        />
-                                        <formInput
-                                            inputBoxStyle='col-md-6 '
-                                            inputStyle='border-1 input-bg-white'
-                                            type='email'
-                                            identifier='email'
-                                            label='Email'
-                                            labelStyle='form-label-gray'
-                                            v-model="applicants.email"
-                                        />
-                                        <formInput
-                                            inputBoxStyle='col-md-6 '
-                                            inputStyle='border-1 input-bg-white'
-                                            type='text'
-                                            identifier='address'
-                                            label='Address'
-                                            labelStyle='form-label-gray'
-                                            v-model="applicants.address"
-                                        />
-                                        <formInput
-                                            inputBoxStyle='col-md-6 '
-                                            inputStyle='border-1 input-bg-white'
-                                            type='text'
-                                            identifier='university'
-                                            label='University'
-                                            labelStyle='form-label-gray'
-                                            v-model="applicants.university"
-                                        />
-                                        <formInput
-                                            inputBoxStyle='col-md-6 '
-                                            inputStyle='border-1 input-bg-white'
-                                            type='text'
-                                            identifier='courseOfStudy'
-                                            label='Course of study'
-                                            labelStyle='form-label-gray'
-                                            v-model="applicants.courseOfStudy"
-                                        />
-                                        <formInput
-                                            inputBoxStyle='col-md-6 '
-                                            inputStyle='border-1 input-bg-white'
-                                            type='date'
-                                            identifier='dateOfBirth'
-                                            label='Date of birth'
-                                            labelStyle='form-label-gray'
-                                            v-model="applicants.dob"
-                                        />
-                                        <formInput
-                                            inputBoxStyle='col-md-6 '
-                                            inputStyle='border-1 input-bg-white'
-                                            type='number'
-                                            identifier='cgpa'
-                                            label='CGPA'
-                                            labelStyle='form-label-gray'
-                                            v-model="applicants.cgpa"
-                                        />
-                                        <label for="formFile" class="form-label col-md-6 col-12">
-                                        <p><span class="form-label-gray">CV</span><br><span class="text-center">+ Choose file</span></p></label>
-                                        <input class="form-control compose-file-input" type="file" id="formFile">
-                                    </form>
-                                    <div class="mt-3">
-                                        <button type="button" class="btn btn-login-purple" data-bs-toggle="modal" data-bs-target="#exampleModal">Approve</button>
-                                        <button type="button" class="btn btn-login-decline ms-4" data-bs-toggle="modal" data-bs-target="#exampleModal2">Decline</button>
-                                    </div>
-                                </div>
-                        </div>
+                        <OffCanvas :applicant='applicant' />
                     </tbody>
                 </table>
             </div>
-            <ApproveModal/>
-            <DeclineModal/>
+            <ApproveModal @click="updateApplicantStatus('approved')" />
+            <DeclineModal  @click="updateApplicantStatus('declined')" />
         </div>
 </template>
 
 <script>
-import formInput from '@/components/Input.vue'
-import ApproveModal from '../../components/ApproveModal.vue'
-import DeclineModal from '../../components/DeclineModal.vue'
-
-
+import OffCanvas from '@/components/Offcanvas.vue'
+import ApproveModal from '@/components/ApproveModal.vue'
+import DeclineModal from '@/components/DeclineModal.vue'
+import ApplicationService from '@/services/application'
+import { DateTime } from 'luxon'
 
 export default {
+    name: 'ApplicationEntries',
     components: {
-        formInput,
         ApproveModal,
-        DeclineModal
+        DeclineModal,
+        OffCanvas
     }, 
     data() {
         return {
-            applicants: [
-                {
-                    name: 'Ify Chinke',
-                    email: 'ify@enyata.com',
-                    dob: '12/09/19 - 22',
-                    address: '3 Sabo Ave, Yaba, Lagos',
-                    university: 'University of Nigeria',
-                    courseOfStudy:'',
-                    cgpa: '5.0',
-                },
-                {
-                    name: 'Ify Chinke',
-                    email: 'ify@enyata.com',
-                    dob: '12/09/19 - 22',
-                    address: '3 Sabo Ave, Yaba, Lagos',
-                    university: 'University of Nigeria',
-                    courseOfStudy:'',
-                    cgpa: '5.0',
-                },
-                {
-                    name: 'Ify Chinke',
-                    email: 'ify@enyata.com',
-                    dob: '12/09/19 - 22',
-                    address: '3 Sabo Ave, Yaba, Lagos',
-                    university: 'University of Nigeria',
-                    courseOfStudy:'',
-                    cgpa: '5.0',
-                }
-            ]
+            applicants: [],
+            batchId: 1,
+            error: false,
+            applicant: {}
+        }
+    },
+    async mounted() {
+        try {
+            const response = await ApplicationService.getApplicantByBatch(this.batchId)
+            if (response.length === 0) {
+                return
+            } else {
+                response.map(item => {
+                    const dob = DateTime.fromISO(item.date_of_birth).toFormat('dd/MM/yyyy')
+                    const floatingAge = Math.abs(DateTime.fromISO(item.date_of_birth).diffNow(['years']).toObject().years)
+                    const age = Math.floor(floatingAge)
+                    item.date_of_birth = dob
+                    item.age = age
+                    item.cgpa = Number(item.cgpa).toFixed(2)
+                })
+                this.applicants = response
+            }
+
+        } catch (error) {
+            this.error = true
+        }
+    },
+    methods: {
+        selectApplicant(id) {
+            this.$route.query.applicantId = id
+            const [ applicant ] = this.applicants.filter(applicant => applicant.id === id)
+            this.applicant = applicant
+        },
+        async updateApplicantStatus(status) {
+            try {
+                await ApplicationService.updateApplicantStatus(this.applicant.id, status)
+            } catch (error) {
+                this.$dtoast.pop({
+                    preset: "error",
+                    heading: 'Error occured',
+                    content: error.response.data.message
+                })
+            }
+            this.$router.push({ name: 'application-entries' })
         }
     }
 }
