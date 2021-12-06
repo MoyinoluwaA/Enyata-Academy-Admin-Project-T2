@@ -8,12 +8,7 @@ const AuthService = () => {
     }
 
     return {
-<<<<<<< HEAD
-        verifyAdmin,
-        loginAdmin,
-=======
         loginAdmin
->>>>>>> 14442ab47884360d62a28143c360f34091425767
     }
 }
 
