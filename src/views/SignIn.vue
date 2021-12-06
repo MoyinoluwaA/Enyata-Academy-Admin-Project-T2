@@ -19,7 +19,7 @@
                             : isError.email = 'is-invalid'"
                         invalidMsg='Enter a valid email address'
                     />
-                    <loginInput
+                    <formInputPassword
                         inputBoxStyle='col-md-6 offset-md-3'
                         :inputStyle="isError.password"
                         type='password'
@@ -45,6 +45,7 @@
 
 <script>
 import loginInput from '@/components/LoginInput.vue'
+import formInputPassword from '@/components/InputPassword.vue'
 import { emailRegex, passwordRegex } from '@/helpers/variables'
 import AuthService from '@/services/auth'
 import { mapActions } from 'vuex'
@@ -52,6 +53,7 @@ import { mapActions } from 'vuex'
 export default {
 	components: {
         loginInput,
+        formInputPassword
 	},
      data() {
         return {
@@ -72,7 +74,7 @@ export default {
                 this.isError.password === 'is-invalid'
             )
         }
-    },
+     },
     methods: {
         ...mapActions(['handleLogIn']),
         async signIn() {
