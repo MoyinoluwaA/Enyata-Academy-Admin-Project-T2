@@ -4,7 +4,9 @@
         <div class="container content">
             <form class='row align-items-center gx-5'>
                 <label class=" col-md-6 col-12 compose-file-choose file-choose-height text-center mb-4">
-                    <input class="compose-file-input" type="file" /> 
+                    <input class="compose-file-input" type="file" :name="uploadFieldName" :disabled="isSaving" accept="image/*"
+                    @change="filesChange($event.target.name, $event.target.files)"
+                      /> 
                     <span class="compose-file-text">+ Choose file</span>
                 </label>
                 <formInput

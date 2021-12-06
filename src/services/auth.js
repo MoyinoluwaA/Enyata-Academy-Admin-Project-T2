@@ -15,7 +15,7 @@ const AuthService = () => {
 
     return {
         verifyAdmin,
-        loginAdmin
+        loginAdmin,
     }
 }
 
