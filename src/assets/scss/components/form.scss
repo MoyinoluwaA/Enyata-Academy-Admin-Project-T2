@@ -24,6 +24,7 @@
     &:focus {
         box-shadow: none;
         border-color: unset;
+        background:transparent;
     }
     &.is-valid,
     &.is-invalid {

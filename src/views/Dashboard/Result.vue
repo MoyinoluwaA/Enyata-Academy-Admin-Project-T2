@@ -27,57 +27,55 @@
                         </tr>
                     </thead>
                     <tbody>
-                         <tr class="table-data" v-for="applicant in applicants" :key="applicant.id">
-                            <td class="table-col p-3">{{ applicant.name }}</td>
+                        <tr class="table-data" v-for="applicant in applicants" :key="applicant.id">
+                            <td class="table-col p-3">{{ applicant.first_name }} {{ applicant.last_name }}</td>
                             <td class="table-col p-3">{{ applicant.email }}</td>
-                            <td class="table-col p-3">{{ applicant.dob }}</td>
+                            <td class="table-col p-3">{{ applicant.date_of_birth }} - {{ applicant.age }}</td>
                             <td class="table-col p-3">{{ applicant.address }}</td>
                             <td class="table-col p-3">{{ applicant.university }}</td>
                             <td class="table-col p-3">{{ applicant.cgpa }}</td>
-                            <td class="table-col p-3">{{ applicant.scores }}</td>
+                            <td class="table-col p-3">{{ applicant.assessment_score }}</td>
                         </tr>
                     </tbody>
-                    </table>
+                </table>
             </div>
     </div>
 </template>
 
 <script>
 
+import ApplicationService from '@/services/application'
+import { DateTime } from 'luxon'
+
 export default {
     name: 'Result',
     data() {
         return {
-            applicants: [
-                {
-                    name: 'Ify Chinke',
-                    email: 'ify@enyata.com',
-                    dob: '12/09/19 - 22',
-                    address: '3 Sabo Ave, Yaba, Lagos',
-                    university: 'University of Nigeria',
-                    cgpa: '5.0',
-                    scores: '15'
-                },
-                {
-                    name: 'Ify Chinke',
-                    email: 'ify@enyata.com',
-                    dob: '12/09/19 - 22',
-                    address: '3 Sabo Ave, Yaba, Lagos',
-                    university: 'University of Nigeria',
-                    cgpa: '5.0',
-                    scores: '15'
-                },
-                {
-                    name: 'Ify Chinke',
-                    email: 'ify@enyata.com',
-                    dob: '12/09/19 - 22',
-                    address: '3 Sabo Ave, Yaba, Lagos',
-                    university: 'University of Nigeria',
-                    cgpa: '5.0',
-                    scores: '15'
-                }
-            ]
+            applicants: [],
+            batchId: 1
         }
+    },
+    async mounted() {
+        try {
+            const res = await ApplicationService.getApplicantByBatch(this.batchId)
+
+            if (res.length === 0) {
+                return
+            } else {
+                res.map(item => {
+                    const date_of_birth = DateTime.fromISO(item.date_of_birth).toFormat('dd/MM/yyyy')
+                    const floatingAge = Math.abs(DateTime.fromISO(item.date_of_birth).diffNow(['years']).toObject().years)
+                    const age = Math.floor(floatingAge)
+                    item.date_of_birth = date_of_birth
+                    item.age = age
+                    item.cgpa = Number(item.cgpa).toFixed(2)
+                })
+                this.applicants = res
+            }
+                
+            } catch (error) {
+                this.error = true
+            }
     }
 }
 </script>
