@@ -19,7 +19,7 @@
             <div class="compose-options-wrapper mt-4 row">
                 <InputBox
                     inputBoxStyle='col-sm-6 pe-sm-4'
-                    inputStyle='compose-options-space'
+                    :inputStyle="{'compose-options-answer': assessmentQuestion.answer === 'a'}"
                     type='text'
                     identifier='A'
                     label='Option A'
@@ -30,7 +30,7 @@
 
                 <InputBox
                     inputBoxStyle='col-sm-6 ps-sm-4'
-                    inputStyle='compose-options-space'
+                    :inputStyle="{'compose-options-answer': assessmentQuestion.answer === 'b'}"
                     type='text'
                     identifier='B'
                     label='Option B'
@@ -41,7 +41,7 @@
 
                 <InputBox
                     inputBoxStyle='col-sm-6 pe-sm-4'
-                    inputStyle='compose-options-space'
+                    :inputStyle="{'compose-options-answer': assessmentQuestion.answer === 'c'}"
                     type='text'
                     identifier='C'
                     label='Option C'
@@ -52,7 +52,7 @@
 
                 <InputBox
                     inputBoxStyle='col-sm-6 ps-sm-4'
-                    inputStyle='compose-options-space'
+                    :inputStyle="{'compose-options-answer': assessmentQuestion.answer === 'd'}"
                     type='text'
                     identifier='D'
                     label='Option D'
@@ -63,7 +63,7 @@
 
                 <div class="text-center mt-3">
                     <p>Select Correct Answer</p>
-                    <select name="correctAnswer" class="form-control form-select mx-auto" @change="selectAnswer($event)" v-model="assessmentQuestion.answer">
+                    <select name="correctAnswer" class="form-control form-select mx-auto" v-model="assessmentQuestion.answer">
                         <option value="a">A</option>
                         <option value="b">B</option>
                         <option value="c">C</option>
@@ -161,31 +161,6 @@ export default {
             } else {
                 this.clearAssessmentQuestion()
             }
-        },
-        selectAnswer(e) {
-            const formerAnswer = document.querySelector('.compose-options-answer')
-            if (formerAnswer) {
-                formerAnswer.classList.remove('compose-options-answer')
-            }
-
-            const {value} = e.target
-            let index
-            switch(value) {
-                case 'a':
-                    index = 0;
-                    break;
-                case 'b':
-                    index = 1;
-                    break;
-                case 'c':
-                    index = 2;
-                    break;
-                default:
-                    index = 3
-            }
-            const option = document.querySelector('.compose-options-wrapper').children[index]
-            const input = option.children[1]
-            input.classList.add('compose-options-answer')
         },
         clearAssessmentQuestion() {
             this.assessmentQuestion = {

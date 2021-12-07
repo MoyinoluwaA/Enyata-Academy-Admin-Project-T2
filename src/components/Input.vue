@@ -16,7 +16,7 @@ export default {
         value: String,
         label: String,
         labelStyle: String,
-        inputStyle: String,
+        inputStyle: [String, Object],
         inputBoxStyle: String,
         formStyle: String,
         readonly: String,
