@@ -72,7 +72,7 @@
                                             </router-link>
                                         </div>
 
-                                        <div class="logout-menus">
+                                        <div class="logout-menus" @click="logOut">
                                             <img class="logout-img" src="../assets/icons/logout-icon.svg" alt="logout"/>
                                             <span class="logout-menu">Log Out</span>
                                         </div>
@@ -141,7 +141,7 @@
                         </router-link>
                     </div>
 
-                    <div class="logout-menus">
+                    <div class="logout-menus" @click="logOut">
                         <img class="logout-img" src="../assets/icons/logout-icon.svg" alt="logout"/>
                         <span class="logout-menu">Log Out</span>
                     </div>
@@ -151,7 +151,16 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
-    name: 'Sidebar'
+    name: 'Sidebar',
+
+    methods: {
+        ...mapActions(['handleLogOut']),
+        logOut() {
+            this.handleLogOut()
+            this.$router.push({ name: 'SignIn' })
+        }
+    }
 }
 </script>
