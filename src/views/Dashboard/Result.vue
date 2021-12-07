@@ -14,15 +14,15 @@
                             <th class="table-col p-3">Name</th>
                             <th class="table-col p-3">Email</th>
                             <th class="table-col p-3">Dob - Age 
-                                <img class="table-sorting ms-3" src="../../../src/assets/icons/sorting.svg" alt="sort" />
+                                <img class="table-sorting ms-3" src="@/assets/icons/sorting.svg" alt="sort" />
                             </th>
                             <th class="table-col p-3">Address</th>
                             <th class="table-col p-3">University</th>
                             <th class="table-col p-3">CGPA 
-                                <img class="table-sorting ms-3" src="../../../src/assets/icons/sorting.svg" alt="sort" />
+                                <img class="table-sorting ms-3" src="@/assets/icons/sorting.svg" alt="sort" />
                             </th>
                             <th class="table-col p-3">Test Scores 
-                                <img class="table-sorting ms-3" src="../../../src/assets/icons/sorting.svg" alt="sort" />
+                                <img class="table-sorting ms-3" src="@/assets/icons/sorting.svg" alt="sort" />
                             </th>
                         </tr>
                     </thead>

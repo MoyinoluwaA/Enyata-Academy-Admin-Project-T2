@@ -65,6 +65,7 @@
 <script>
 import Button from "../../components/Button.vue"
 import ApplicationService from '@/services/application'
+import { mapActions } from 'vuex'
 
 export default {
     data() {
@@ -85,11 +86,15 @@ export default {
                 this.total_applicants_in_batch = total_applicants_in_batch
                 this.batches = total_batches
                 this.loading = false
+                this.saveBatch(this.batches)
             }
         } catch (error) {
             this.error = true
             this.loading = false
         }
+    },
+    methods: {
+        ...mapActions(['saveBatch'])
     }
 }
 </script>
