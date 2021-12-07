@@ -35,13 +35,14 @@
             height: 41px;
             margin-top: -10px;
 
-            &-answer {
-                border-radius: 4px;
-                background-color: #31D283;
-                height: 41px;
-                border: none;
-                margin-top: -10px;
-            }
+        }
+        &-answer {
+            border-radius: 4px;
+            background-color: #31D283;
+            color: white;
+            height: 41px;
+            border: none;
+            margin-top: -10px;
         }
     }
 

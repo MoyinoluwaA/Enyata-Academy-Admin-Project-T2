@@ -114,7 +114,7 @@
                     </div>
 
                     <div class="dashboard-menus">
-                        <router-link class="dashboard-link" :to="{ name: 'compose-assessment' }">
+                        <router-link class="dashboard-link" :to="{ name: 'check-assessment-exist' }">
                             <img class="dashboard-img" src="../assets/icons/compose-assessment-icon.svg" alt="create"/>
                             <span class="dashboard-menu">Compose Assessment</span>
                         </router-link>

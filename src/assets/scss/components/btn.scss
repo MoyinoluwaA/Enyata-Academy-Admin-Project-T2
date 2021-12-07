@@ -20,6 +20,9 @@
             border: 1px solid $grey-color;
         }
     }
+    &-purple{
+        @include button($purple-color,$white-color)
+    }
     &-offcanvas {
         width: 125px;
     }
