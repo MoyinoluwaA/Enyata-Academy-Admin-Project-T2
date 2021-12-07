@@ -16,10 +16,16 @@ const ApplicationService = () => {
         return response
     }
 
+    const updateAdminInfo = async adminInfo => {
+        const response = await api.put('/users/admin/update', adminInfo)
+        return response
+    }
+
     return {
         getApplicantByBatch,
         updateApplicantStatus,
-        getApplicationStats
+        getApplicationStats,
+        updateAdminInfo
     }
 }
 

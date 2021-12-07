@@ -6,7 +6,7 @@
 		</div>
 
 		<div class="settings-profile-form">
-		<form>
+		<form @submit.prevent="updateAdminData">
 			<label class="settings-img-upload">
 				<input class="settings-img-input" type="file" /> 
 				<img src="../../../assets/icons/upload-img.svg" />
@@ -42,7 +42,7 @@
 			</div>
 
 			<div class="btn-save-wrapper">
-				<Button btnStyle="btn-save mb-5" btnText="Save" />
+				<Button btnStyle="btn-save mb-5" btnText="Save" type="submit" />
 			</div>
 		</form>
 
@@ -53,9 +53,19 @@
 
 <script>
 import Button from "../../../components/Button.vue"
+// import ApplicationService from '@/services/application'
+
 export default {
-  components: {
-    Button
+	components: {
+		Button
+  },
+
+  methods: {
+	updateAdminData() {
+		console.log('working')
+	}
   }
+
+
 }
 </script>
