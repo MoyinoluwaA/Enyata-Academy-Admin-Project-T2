@@ -18,8 +18,8 @@
                                 <div class="side-bar-top">
                                     <img class="profile-img" src="../assets/icons/profile-dp.svg" alt="profile-img">
 
-                                    <p class="admin-name text-center">Jane Doe</p>
-                                    <p class="admin-mail text-center">doe@enyata.com</p>
+                                    <p class="admin-name text-center">{{ name }}</p>
+                                    <p class="admin-mail text-center">{{ email }}</p>
                                 </div>
                                 <li class="nav-item">
                                     <div class="side-bar-info">
@@ -87,8 +87,8 @@
                 <div class="side-bar-top">
                     <img class="side-bar-profile-img" src="../assets/icons/profile-dp.svg" alt="profile-img">
 
-                    <p class="admin-name text-center">Jane Doe</p>
-                    <p class="admin-mail text-center">doe@enyata.com</p>
+                    <p class="admin-name text-center">{{ name }}</p>
+                    <p class="admin-mail text-center">{{ email }}</p>
                 </div>
                 
                 <div class="side-bar-info">
@@ -154,7 +154,10 @@
 import { mapActions } from 'vuex'
 export default {
     name: 'Sidebar',
-
+    props: {
+        name: String,
+        email: String
+    },
     methods: {
         ...mapActions(['handleLogOut']),
         logOut() {

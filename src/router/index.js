@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import store from '../store';
 import SignIn from '../views/SignIn.vue'
 
 Vue.use(VueRouter)
@@ -8,13 +9,15 @@ const routes = [
 	{
 		path: '/',
 		name: 'SignIn',
-		component: SignIn
+		component: SignIn,
+		meta: { requiresAuth: false }
 	},
 	{
 		path: '/dashboard',
 		redirect: '/dashboard/home',
 		name: 'Dashboard',
 		component: () => import(/* webpackChunkName: "about" */ '../views/Dashboard/index.vue'),
+		meta: { requiresAuth: true },
 		children: [
 			{
 				path: 'home',
@@ -87,6 +90,21 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next) => {
+    if (to.matched.some(route => route.meta.requiresAuth)) {
+        if (!(store.state.token)) {
+            next('/');
+        } else {
+            next()
+        }
+    } else if (to.matched.some(route => !route.meta.requiresAuth)) {
+        if (store.state.token) {
+            next('/dashboard')
+        }
+    }
+    next()
 })
 
 export default router
