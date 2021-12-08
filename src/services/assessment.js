@@ -11,9 +11,15 @@ const AssessmentService = () => {
         return response.data
     }
 
+    const getAssessmentHistory = async () => {
+        const response = await api.get('assessment/history')
+        return response.data
+    }
+
     return {
         checkAssessmentExist,
-        createAssessment
+        createAssessment,
+        getAssessmentHistory
     }
 }
 
