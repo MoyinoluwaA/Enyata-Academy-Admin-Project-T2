@@ -97,12 +97,14 @@ export default {
 		} catch (error) {
 			if (error.response.status === 500) {
 				this.fileUploadError.picture = true
-				if (error.response.status === 400) {
+				
+				if (error.response.status === 401) {
 					this.$dtoast.pop({
 						preset: "error",
 						heading: "Error Uploading Image",
 						content: "Error occured while uploading, kindly check the image size"
 					})
+					this.$router.push({name: 'SignIn'})
 				}
 			}
 		}

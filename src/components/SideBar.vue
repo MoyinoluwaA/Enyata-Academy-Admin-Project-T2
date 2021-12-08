@@ -156,10 +156,6 @@ import ApplicationService from '@/services/application'
 
 export default {
     name: 'Sidebar',
-    props: {
-        name: String,
-        email: String
-    },
     data() {
         return {
             first_name: '',
@@ -176,12 +172,13 @@ export default {
                 this.image = res.data.picture.url
             }
         } catch (error) {
-            if (error.response.status === 400) {
+            if (error.response.status === 401) {
 				this.$dtoast.pop({
 					preset: "error",
 					heading: "Unauthenticated user",
 					content: "Error occured while fetching for data. Kindly go back to login"
 				})
+                this.$router.push({name: 'SignIn'})
 			}
         }
     },
