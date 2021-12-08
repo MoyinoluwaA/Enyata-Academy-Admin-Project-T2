@@ -173,12 +173,7 @@ export default {
             }
         } catch (error) {
             if (error.response.status === 401) {
-				this.$dtoast.pop({
-					preset: "error",
-					heading: "Unauthenticated user",
-					content: "Error occured while fetching for data. Kindly go back to login"
-				})
-                this.$router.push({name: 'SignIn'})
+				this.logOut()
 			}
         }
     },
