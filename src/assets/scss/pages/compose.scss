@@ -28,13 +28,13 @@
     &-options {
         &-wrapper {
             cursor: pointer;
-        }
-        &-space {
-            border: 1.5px solid $primary-color;
-            border-radius: 4px;
-            height: 41px;
-            margin-top: -10px;
 
+            .input {
+                border: 1.5px solid $primary-color;
+                border-radius: 4px;
+                height: 41px;
+                margin-top: -10px;
+            }
         }
         &-answer {
             border-radius: 4px;

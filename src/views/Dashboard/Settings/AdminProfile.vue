@@ -97,15 +97,13 @@ export default {
 		} catch (error) {
 			if (error.response.status === 500) {
 				this.fileUploadError.picture = true
+			} else if (error.response.status === 400) {
+				this.$dtoast.pop({
+					preset: "error",
+					heading: "Error Uploading Image",
+					content: "Error occured while uploading, kindly check the image size"
+				})
 				
-				if (error.response.status === 401) {
-					this.$dtoast.pop({
-						preset: "error",
-						heading: "Error Uploading Image",
-						content: "Error occured while uploading, kindly check the image size"
-					})
-					this.$router.push({name: 'SignIn'})
-				}
 			}
 		}
 	},
@@ -152,12 +150,8 @@ export default {
 				this.admin.address = res.data.address
 			}
 		} catch (error) {
-			if (error.response.status === 400) {
-				this.$dtoast.pop({
-					preset: "error",
-					heading: "Unauthenticated user",
-					content: "Error occured while fetching for data. Kindly go back to login"
-				})
+			if (error.response.status === 401) {
+				this.$router.push({ name: 'SignIn' })
 			}
 		}
 	}
