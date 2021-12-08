@@ -15,11 +15,11 @@
                         <div class="d-md-none collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
-                                <div class="side-bar-top">
-                                    <img class="profile-img" src="../assets/icons/profile-dp.svg" alt="profile-img">
+                                <div class="side-bar-top mt-4">
+                                    <img class="profile-img admin-pf mx-auto" :src="image" alt="profile-img">
 
-                                    <p class="admin-name text-center">{{ name }}</p>
-                                    <p class="admin-mail text-center">{{ email }}</p>
+                                    <p class="admin-name text-center">{{ first_name }}</p>
+                                    <p class="admin-mail text-center">{{ admin_email }}</p>
                                 </div>
                                 <li class="nav-item">
                                     <div class="side-bar-info">
@@ -85,10 +85,10 @@
             </div>
             <div class="side-bar d-none d-md-block">
                 <div class="side-bar-top">
-                    <img class="side-bar-profile-img" src="../assets/icons/profile-dp.svg" alt="profile-img">
+                    <img class="side-bar-profile-img admin-pf" :src="image" alt="profile-img">
 
-                    <p class="admin-name text-center">{{ name }}</p>
-                    <p class="admin-mail text-center">{{ email }}</p>
+                    <p class="admin-name text-center">{{ first_name }}</p>
+                    <p class="admin-mail text-center">{{ admin_email }}</p>
                 </div>
                 
                 <div class="side-bar-info">
@@ -152,11 +152,38 @@
 
 <script>
 import { mapActions } from 'vuex'
+import ApplicationService from '@/services/application'
+
 export default {
     name: 'Sidebar',
     props: {
         name: String,
         email: String
+    },
+    data() {
+        return {
+            first_name: '',
+            admin_email: '',
+            image: ''
+        }
+    },
+    async mounted() {
+        try {
+            const res = await ApplicationService.getAdminInfo()
+            if (res.code === 200) {
+                this.first_name = res.data.first_name
+                this.admin_email = res.data.email
+                this.image = res.data.picture.url
+            }
+        } catch (error) {
+            if (error.response.status === 400) {
+				this.$dtoast.pop({
+					preset: "error",
+					heading: "Unauthenticated user",
+					content: "Error occured while fetching for data. Kindly go back to login"
+				})
+			}
+        }
     },
     methods: {
         ...mapActions(['handleLogOut']),

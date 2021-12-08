@@ -21,11 +21,17 @@ const ApplicationService = () => {
         return response
     }
 
+    const getAdminInfo = async () => {
+        const response =await api.get('/users/admin/details')
+        return response
+    }
+
     return {
         getApplicantByBatch,
         updateApplicantStatus,
         getApplicationStats,
-        updateAdminInfo
+        updateAdminInfo,
+        getAdminInfo
     }
 }
 
