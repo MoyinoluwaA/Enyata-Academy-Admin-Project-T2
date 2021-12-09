@@ -15,7 +15,6 @@
                     labelStyle='form-label-dark'
                     label='Application start date'
                     v-model="admin.start_date"
-                    invalidMsg='Enter a valid date format'
                 />
                 <formInput
                     inputBoxStyle='col-md-6'
@@ -25,7 +24,6 @@
                     labelStyle='form-label-dark'
                     label='Application closure date'
                     v-model="admin.closing_date"
-                    invalidMsg='Enter a valid date format'
                 />        
             </form>
             <form class='row gx-5 justify-content-center' @submit.prevent='createApplications()'>
@@ -117,13 +115,13 @@ export default {
                         heading: 'Success',
                         content
                     })
+                    this.$router.push({ name: 'create-assessment' })
                  } 
                  this.clearForm()
              } catch (error) {
                  console.log(error)
-                 let content
+                 let content='Error ocurred while application was created!'
                   if (error.response.data.code === 401) {
-                    content='Error ocurred while application was created!'
                     this.$dtoast.pop({
                         preset: "error",
                         heading: 'Error',
