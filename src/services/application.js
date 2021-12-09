@@ -15,6 +15,10 @@ const ApplicationService = () => {
         const response = await api.get('/applications/stats')
         return response
     }
+    const createApplication = async(applicationDetails) => {
+        const response = await api.post('/applications/create', applicationDetails)
+        return response
+    }
 
     const updateAdminInfo = async adminInfo => {
         const response = await api.put('/users/admin/update', adminInfo)
@@ -30,6 +34,7 @@ const ApplicationService = () => {
         getApplicantByBatch,
         updateApplicantStatus,
         getApplicationStats,
+        createApplication,
         updateAdminInfo,
         getAdminInfo
     }

@@ -3,48 +3,62 @@
         <h2 class="dashboard-header ps-2">Create Application</h2>
         <div class="container content">
             <form class='row align-items-center gx-5'>
-                <label class=" col-md-6 col-12 compose-file-choose file-choose-height text-center mb-4">
+                <!-- <label class=" col-md-6 col-12 compose-file-choose file-choose-height text-center mb-4">
                     <input class="compose-file-input" type="file" /> 
                     <span class="compose-file-text">+ Choose file</span>
-                </label>
+                </label> -->
+                <formInput
+                    inputBoxStyle='col-md-6'
+                    :inputStyle='isError.start_date'
+                    type='date'
+                    identifier='date'
+                    labelStyle='form-label-dark'
+                    label='Application start date'
+                    v-model="admin.start_date"
+                />
+                <formInput
+                    inputBoxStyle='col-md-6'
+                    :inputStyle='isError.closing_date'
+                    type='date'
+                    identifier='date'
+                    labelStyle='form-label-dark'
+                    label='Application closure date'
+                    v-model="admin.closing_date"
+                />        
+            </form>
+            <form class='row gx-5 justify-content-center' @submit.prevent='createApplications()'>
                 <formInput
                     inputBoxStyle='col-md-6 link-input'
-                    inputStyle='bg-white text-black input-bg-white'
+                    :inputStyle='isError.application_link'
                     type='text'
                     identifier='text'
                     labelStyle='form-label-dark'
                     label='Link'
-                    v-model="admin.link"
-                />
-            </form>
-            <form class='row gx-5 justify-content-center'>
-                <formInput
-                    inputBoxStyle='col-md-6'
-                    inputStyle='bg-white text-black input-bg-white'
-                    type='email'
-                    identifier='email'
-                    labelStyle='form-label-dark'
-                    label='Application closure date'
-                    v-model="admin.date"
+                    v-model="admin.application_link"
+                    @input="admin.application_link.match(linkRegex) 
+                        ? isError.application_link= 'is-valid' 
+                        : isError.application_link = 'is-invalid'"
+                    invalidMsg='Enter a valid link format'
                 />
                 <formInput
                     inputBoxStyle='col-md-6'
-                    inputStyle='bg-white text-black input-bg-white'
-                    type='email'
-                    identifier='email'
+                    :inputStyle='isError.batch_id'
+                    type='number'
+                    identifier='number'
                     label='Batch Id'
-                    v-model='admin.id'
+                    v-model='admin.batch_id'
+                    invalidMsg='This field cannot be empty'
                 />
-            </form>
-            <div class="form-group mt-4">
-                <label for="exampleFormControlTextarea1 compose-head fw-normal">Instructions</label>
-                <textarea class="form-control compose-questions mt-1" rows="3"></textarea>
-            </div>
-            <div class="row justify-content-center">
-                <div class=" row btn col-md-6 col-sm-12 mt-3">
-                    <button class="btn btn-login-purple mt-4" type="submit">Submit</button>
+                <div class="form-group mt-4">
+                    <label for="exampleFormControlTextarea1 compose-head fw-normal">Instructions</label>
+                    <textarea class="form-control compose-questions mt-1" rows="3" v-model='admin.instructions'></textarea>
                 </div>
-            </div>
+                <div class="row justify-content-center">
+                    <div class=" row btn col-md-6 col-sm-12 mt-3">
+                        <button class="btn btn-login-purple mt-4" type="submit" :disabled='isDisabled'>Submit</button>
+                    </div>
+                </div>
+            </form>
         </div>
         
         
@@ -52,7 +66,9 @@
 </template>
 
 <script>
-import formInput from '@/components/Input.vue'
+import formInput from '@/components/InputApplication.vue'
+import {linkRegex, dateRegex } from '@/helpers/variables'
+import ApplicationService from '@/services/application'
 
 export default {
     name: 'SignIn',
@@ -62,12 +78,76 @@ export default {
      data() {
         return {
             admin: {
-                link:'',
-                date:'',
-                id:'',
-
-            }
+                batch_id:'',
+                start_date:'',
+                closing_date:'',
+                application_link:'',
+                instructions:''
+            },
+            isError: {},
+            linkRegex,
+            dateRegex
+        }
+     },
+     computed: {
+        isDisabled () {
+            return (
+                (!(this.admin.batch_id && this.admin.start_date && this.admin.closing_date && this.admin.application_link && this.admin.instructions)) ||
+                this.isError.batch_id === 'is-invalid' ||
+                this.isError.start_date === 'is-invalid' ||
+                this.isError.closing_date === 'is-invalid' ||
+                this.isError.application_link === 'is-invalid' ||
+                this.isError.instructions === 'is-invalid'
+            )
+        }
+    },
+     methods: {
+         async createApplications() {
+             try {
+                 const {...admin}= this.admin
+                 const response = await ApplicationService.createApplication(admin)
+                 console.log(response)
+                 let content
+                 if (response.code === 201){
+                     content='Application has been successfully created'
+                    this.$dtoast.pop({
+                        preset: "success",
+                        heading: 'Success',
+                        content
+                    })
+                    this.$router.push({ name: 'create-assessment' })
+                 } 
+                 this.clearForm()
+             } catch (error) {
+                 console.log(error)
+                 let content='Error ocurred while application was created!'
+                  if (error.response.data.code === 401) {
+                    this.$dtoast.pop({
+                        preset: "error",
+                        heading: 'Error',
+                        content
+                    })
+                } else {
+                    this.$dtoast.pop({
+                        preset: "error",
+                        heading: 'Error',
+                        content
+                    })
+                }
+                this.clearForm()
+             }
+         },
+         clearForm() {
+            return (
+                this.admin.batch_id = '',
+                this.admin.start_date = '',
+                this.admin.closing_date = '',
+                this.admin.application_link= '',
+                this.admin.instructions= '',
+                this.isError={}
+            )
         }
      }
+    
 }
 </script>
