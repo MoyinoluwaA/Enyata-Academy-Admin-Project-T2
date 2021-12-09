@@ -20,11 +20,26 @@ const ApplicationService = () => {
         return response
     }
 
+    const updateAdminInfo = async adminInfo => {
+        const response = await api.put('/users/admin/update', adminInfo)
+        return response
+    }
+
+    const getAdminInfo = async () => {
+        const response =await api.get('/users/admin/details')
+        return response
+    }
+
     return {
         getApplicantByBatch,
         updateApplicantStatus,
         getApplicationStats,
+<<<<<<< HEAD
         createApplication
+=======
+        updateAdminInfo,
+        getAdminInfo
+>>>>>>> 3858b0854d274809847faa20e109d006faa635ab
     }
 }
 

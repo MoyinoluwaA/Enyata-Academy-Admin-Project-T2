@@ -27,22 +27,12 @@
         <div class="dashboard-information mb-5">
             <div class="">
                 <p class="dashboard-history-text text-md-start text-center">History</p>
-                <p class="dashboard-update-date text-md-start text-center">Last Update  <span>18:24, 22/02/19</span></p>
+                <p class="dashboard-update-date text-md-start text-center">Last Update  <span>{{ date }}</span></p>
 
                 <div class="dashboard-info-table">
                     <div class="dashboard-table-row d-flex flex-row">
-                        <p class="dashboard-col me-4 mt-3 ms-4">Academy Batch 1</p>
-                        <p class="dashboard-col me-4 mt-3 ms-4">15 students</p>
-                        <p class="dashboard-col me-4 mt-3 ms-4">started 11/09/15</p>
-                    </div>
-                    <div class="dashboard-table-row d-flex flex-row">
-                        <p class="dashboard-col me-4 mt-3 ms-4">Academy Batch 1</p>
-                        <p class="dashboard-col me-4 mt-3 ms-4">15 students</p>
-                        <p class="dashboard-col me-4 mt-3 ms-4">started 11/09/15</p>
-                    </div>
-                    <div class="dashboard-table-row d-flex flex-row">
-                        <p class="dashboard-col me-4 mt-3 ms-4">Academy Batch 1</p>
-                        <p class="dashboard-col me-4 mt-3 ms-4">15 students</p>
+                        <p class="dashboard-col me-4 mt-3 ms-4">Academy Batch <span>{{ academy_batch }}</span> </p>
+                        <p class="dashboard-col me-4 mt-3 ms-4"><span>{{ academy_student}}</span> students</p>
                         <p class="dashboard-col me-4 mt-3 ms-4">started 11/09/15</p>
                     </div>
                 </div>
@@ -65,12 +55,16 @@
 <script>
 import Button from "../../components/Button.vue"
 import ApplicationService from '@/services/application'
+import { mapActions } from 'vuex'
 
 export default {
     data() {
         return {
             loading: true,
-            error: false
+            error: false,
+            academy_batch: '',
+            academy_student: '',
+            date: ''
         }
     },
     components: {
@@ -85,11 +79,22 @@ export default {
                 this.total_applicants_in_batch = total_applicants_in_batch
                 this.batches = total_batches
                 this.loading = false
+                this.saveBatch(this.batches)
+
+                this.academy_batch = response.data.total_batches
+                this.academy_student = response.data.total_applicants
             }
         } catch (error) {
             this.error = true
             this.loading = false
         }
+        
+        const newDate = new Date();
+        this.date = newDate.toUTCString()
+       
+    },
+    methods: {
+        ...mapActions(['saveBatch'])
     }
 }
 </script>

@@ -1,7 +1,13 @@
-.form-input {
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
+.form {
+    &-input {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+    }
+
+    &-select {
+        width: 80px;
+    }
 }
 
 .inputStyle {

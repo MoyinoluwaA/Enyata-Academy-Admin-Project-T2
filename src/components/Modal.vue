@@ -6,7 +6,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div> 
                 <div class="modal-body ">
-                    <p class="text-center w-75 mx-auto">Are you sure you want to approve this application?</p>
+                    <p class="text-center w-75 mx-auto">{{ modalText }}</p>
                 </div>
                 <div class="row justify-content-center mb-5">
                     <button type="button" class="btn btn-login-purple col-3" @click="$emit('click')">Yes</button>
@@ -19,6 +19,9 @@
 
 <script>
 export default {
-    name:'ApproveModal'
+    name: 'Modal',
+    props: {
+        modalText: String
+    }
 }
 </script>

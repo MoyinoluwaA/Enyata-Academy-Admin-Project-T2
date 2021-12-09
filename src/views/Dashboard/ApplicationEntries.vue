@@ -38,14 +38,14 @@
                     </tbody>
                 </table>
             </div>
-            <ApproveModal @click="updateApplicantStatus('approved')" />
+            <ApproveModal @click="updateApplicantStatus('approved')" modalText='Are you sure you want to approve this application?' />
             <DeclineModal  @click="updateApplicantStatus('declined')" />
         </div>
 </template>
 
 <script>
 import OffCanvas from '@/components/Offcanvas.vue'
-import ApproveModal from '@/components/ApproveModal.vue'
+import ApproveModal from '@/components/Modal.vue'
 import DeclineModal from '@/components/DeclineModal.vue'
 import ApplicationService from '@/services/application'
 import { DateTime } from 'luxon'

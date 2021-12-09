@@ -15,11 +15,11 @@
                         <div class="d-md-none collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
-                                <div class="side-bar-top">
-                                    <img class="profile-img" src="../assets/icons/profile-dp.svg" alt="profile-img">
+                                <div class="side-bar-top mt-4">
+                                    <img class="profile-img admin-pf mx-auto" :src="image" alt="profile-img">
 
-                                    <p class="admin-name text-center">Jane Doe</p>
-                                    <p class="admin-mail text-center">doe@enyata.com</p>
+                                    <p class="admin-name text-center">{{ first_name }}</p>
+                                    <p class="admin-mail text-center">{{ admin_email }}</p>
                                 </div>
                                 <li class="nav-item">
                                     <div class="side-bar-info">
@@ -72,7 +72,7 @@
                                             </router-link>
                                         </div>
 
-                                        <div class="logout-menus">
+                                        <div class="logout-menus" @click="logOut">
                                             <img class="logout-img" src="../assets/icons/logout-icon.svg" alt="logout"/>
                                             <span class="logout-menu">Log Out</span>
                                         </div>
@@ -85,10 +85,10 @@
             </div>
             <div class="side-bar d-none d-md-block">
                 <div class="side-bar-top">
-                    <img class="side-bar-profile-img" src="../assets/icons/profile-dp.svg" alt="profile-img">
+                    <img class="side-bar-profile-img admin-pf" :src="image" alt="profile-img">
 
-                    <p class="admin-name text-center">Jane Doe</p>
-                    <p class="admin-mail text-center">doe@enyata.com</p>
+                    <p class="admin-name text-center">{{ first_name }}</p>
+                    <p class="admin-mail text-center">{{ admin_email }}</p>
                 </div>
                 
                 <div class="side-bar-info">
@@ -114,7 +114,7 @@
                     </div>
 
                     <div class="dashboard-menus">
-                        <router-link class="dashboard-link" :to="{ name: 'compose-assessment' }">
+                        <router-link class="dashboard-link" :to="{ name: 'check-assessment-exist' }">
                             <img class="dashboard-img" src="../assets/icons/compose-assessment-icon.svg" alt="create"/>
                             <span class="dashboard-menu">Compose Assessment</span>
                         </router-link>
@@ -141,7 +141,7 @@
                         </router-link>
                     </div>
 
-                    <div class="logout-menus">
+                    <div class="logout-menus" @click="logOut">
                         <img class="logout-img" src="../assets/icons/logout-icon.svg" alt="logout"/>
                         <span class="logout-menu">Log Out</span>
                     </div>
@@ -151,7 +151,38 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+import ApplicationService from '@/services/application'
+
 export default {
-    name: 'Sidebar'
+    name: 'Sidebar',
+    data() {
+        return {
+            first_name: '',
+            admin_email: '',
+            image: ''
+        }
+    },
+    async mounted() {
+        try {
+            const res = await ApplicationService.getAdminInfo()
+            if (res.code === 200) {
+                this.first_name = res.data.first_name
+                this.admin_email = res.data.email
+                this.image = res.data.picture.url
+            }
+        } catch (error) {
+            if (error.response.status === 401) {
+				this.logOut()
+			}
+        }
+    },
+    methods: {
+        ...mapActions(['handleLogOut']),
+        logOut() {
+            this.handleLogOut()
+            this.$router.push({ name: 'SignIn' })
+        }
+    }
 }
 </script>
