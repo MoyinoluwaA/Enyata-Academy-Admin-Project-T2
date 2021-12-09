@@ -63,6 +63,7 @@ export default {
         return {
             loading: true,
             error: false,
+            date: '',
             applicationStats: []
         }
     },
@@ -72,6 +73,7 @@ export default {
     async mounted() {
         try {
             const response = await ApplicationService.getApplicationStats()
+
             if (response.code === 200) {
                 this.loading = false
 
@@ -80,21 +82,19 @@ export default {
                     applicant.batch_id = Number(applicant.batch_id)
                     applicant.start_date = DateTime.fromISO(applicant.start_date).toFormat('dd/MM/yy')
                 })
-                
+
                 this.total_applicants = total_applicants
                 this.total_applicants_in_batch = total_applicants_in_batch
                 this.batches = total_batches
                 this.saveBatch(this.batches)
                 this.applicationStats = applicationStats
+                this.date = DateTime.now().toFormat('hh:mm, dd/MM/yy')
             }
+            
         } catch (error) {
             this.error = true
             this.loading = false
         }
-        
-        const newDate = new Date();
-        this.date = newDate.toUTCString()
-       
     },
     methods: {
         ...mapActions(['saveBatch'])
