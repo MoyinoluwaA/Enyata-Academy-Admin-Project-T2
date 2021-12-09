@@ -15,11 +15,16 @@ const ApplicationService = () => {
         const response = await api.get('/applications/stats')
         return response
     }
+    const createApplication = async(applicationDetails) => {
+        const response = await api.post('/applications/create', applicationDetails)
+        return response
+    }
 
     return {
         getApplicantByBatch,
         updateApplicantStatus,
-        getApplicationStats
+        getApplicationStats,
+        createApplication
     }
 }
 
