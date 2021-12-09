@@ -30,10 +30,10 @@
                 <p class="dashboard-update-date text-md-start text-center">Last Update  <span>{{ date }}</span></p>
 
                 <div class="dashboard-info-table">
-                    <div class="dashboard-table-row d-flex flex-row">
-                        <p class="dashboard-col me-4 mt-3 ms-4">Academy Batch <span>{{ academy_batch }}</span> </p>
-                        <p class="dashboard-col me-4 mt-3 ms-4"><span>{{ academy_student}}</span> students</p>
-                        <p class="dashboard-col me-4 mt-3 ms-4">started 11/09/15</p>
+                    <div class="dashboard-table-row d-flex flex-row" v-for="application in applicationStats" :key="application.id">
+                        <p class="dashboard-col me-4 mt-3 ms-4">Academy Batch {{ application.batch_id }} </p>
+                        <p class="dashboard-col me-4 mt-3 ms-4">{{ application.student_count }} students</p>
+                        <p class="dashboard-col me-4 mt-3 ms-4">started {{ application.start_date }}</p>
                     </div>
                 </div>
             </div>
@@ -55,6 +55,7 @@
 <script>
 import Button from "../../components/Button.vue"
 import ApplicationService from '@/services/application'
+import { DateTime } from 'luxon'
 import { mapActions } from 'vuex'
 
 export default {
@@ -62,9 +63,7 @@ export default {
         return {
             loading: true,
             error: false,
-            academy_batch: '',
-            academy_student: '',
-            date: ''
+            applicationStats: []
         }
     },
     components: {
@@ -74,15 +73,19 @@ export default {
         try {
             const response = await ApplicationService.getApplicationStats()
             if (response.code === 200) {
-                const { total_applicants, total_applicants_in_batch, total_batches } = response.data
+                this.loading = false
+
+                const { total_applicants, total_applicants_in_batch, total_batches, applicationStats } = response.data
+                applicationStats.map(applicant => {
+                    applicant.batch_id = Number(applicant.batch_id)
+                    applicant.start_date = DateTime.fromISO(applicant.start_date).toFormat('dd/MM/yy')
+                })
+                
                 this.total_applicants = total_applicants
                 this.total_applicants_in_batch = total_applicants_in_batch
                 this.batches = total_batches
-                this.loading = false
                 this.saveBatch(this.batches)
-
-                this.academy_batch = response.data.total_batches
-                this.academy_student = response.data.total_applicants
+                this.applicationStats = applicationStats
             }
         } catch (error) {
             this.error = true

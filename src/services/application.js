@@ -22,7 +22,7 @@ const ApplicationService = () => {
     }
 
     const getAdminInfo = async () => {
-        const response =await api.get('/users/admin/details')
+        const response =await api.get('/users/details')
         return response
     }
 
