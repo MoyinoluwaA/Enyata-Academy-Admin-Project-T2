@@ -3,10 +3,32 @@
         <h2 class="dashboard-header ps-2">Create Application</h2>
         <div class="container content">
             <form class='row align-items-center gx-5'>
-                <label class=" col-md-6 col-12 compose-file-choose file-choose-height text-center mb-4">
+                <!-- <label class=" col-md-6 col-12 compose-file-choose file-choose-height text-center mb-4">
                     <input class="compose-file-input" type="file" /> 
                     <span class="compose-file-text">+ Choose file</span>
-                </label>
+                </label> -->
+                <formInput
+                    inputBoxStyle='col-md-6'
+                    :inputStyle='isError.start_date'
+                    type='date'
+                    identifier='date'
+                    labelStyle='form-label-dark'
+                    label='Application start date'
+                    v-model="admin.start_date"
+                    invalidMsg='Enter a valid date format'
+                />
+                <formInput
+                    inputBoxStyle='col-md-6'
+                    :inputStyle='isError.closing_date'
+                    type='date'
+                    identifier='date'
+                    labelStyle='form-label-dark'
+                    label='Application closure date'
+                    v-model="admin.closing_date"
+                    invalidMsg='Enter a valid date format'
+                />        
+            </form>
+            <form class='row gx-5 justify-content-center' @submit.prevent='createApplications()'>
                 <formInput
                     inputBoxStyle='col-md-6 link-input'
                     :inputStyle='isError.application_link'
@@ -19,34 +41,6 @@
                         ? isError.application_link= 'is-valid' 
                         : isError.application_link = 'is-invalid'"
                     invalidMsg='Enter a valid link format'
-                />
-            </form>
-            <form class='row gx-5 justify-content-center' @submit.prevent='createApplications()'>
-                <formInput
-                    inputBoxStyle='col-md-6'
-                    inputStyle='bg-white text-black input-bg-white'
-                    type=''
-                    identifier='date'
-                    labelStyle='form-label-dark'
-                    label='Application start date'
-                    v-model="admin.start_date"
-                    @input="admin.closing_date.match(dateRegex) 
-                        ? isError.closing_date= 'is-valid' 
-                        : isError.closing_date = 'is-invalid'"
-                    invalidMsg='Enter a valid date format'
-                />
-                <formInput
-                    inputBoxStyle='col-md-6'
-                    :inputStyle='isError.closing_date'
-                    type=''
-                    identifier='date'
-                    labelStyle='form-label-dark'
-                    label='Application closure date'
-                    v-model="admin.closing_date"
-                    @input="admin.closing_date.match(dateRegex) 
-                        ? isError.closing_date= 'is-valid' 
-                        : isError.closing_date = 'is-invalid'"
-                    invalidMsg='Enter a valid date format'
                 />
                 <formInput
                     inputBoxStyle='col-md-6'
@@ -115,13 +109,46 @@ export default {
                  const {...admin}= this.admin
                  const response = await ApplicationService.createApplication(admin)
                  console.log(response)
-                //  if (response.code === 200) {
-                    
-                //  }
+                 let content
+                 if (response.code === 201){
+                     content='Application has been successfully created'
+                    this.$dtoast.pop({
+                        preset: "success",
+                        heading: 'Success',
+                        content
+                    })
+                 } 
+                 this.clearForm()
              } catch (error) {
                  console.log(error)
+                 let content
+                  if (error.response.data.code === 401) {
+                    content='Error ocurred while application was created!'
+                    this.$dtoast.pop({
+                        preset: "error",
+                        heading: 'Error',
+                        content
+                    })
+                } else {
+                    this.$dtoast.pop({
+                        preset: "error",
+                        heading: 'Error',
+                        content
+                    })
+                }
+                this.clearForm()
              }
-         }
+         },
+         clearForm() {
+            return (
+                this.admin.batch_id = '',
+                this.admin.start_date = '',
+                this.admin.closing_date = '',
+                this.admin.application_link= '',
+                this.admin.instructions= '',
+                this.isError={}
+            )
+        }
      }
     
 }

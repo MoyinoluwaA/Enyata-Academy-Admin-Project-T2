@@ -34,12 +34,9 @@ const ApplicationService = () => {
         getApplicantByBatch,
         updateApplicantStatus,
         getApplicationStats,
-<<<<<<< HEAD
-        createApplication
-=======
+        createApplication,
         updateAdminInfo,
         getAdminInfo
->>>>>>> 3858b0854d274809847faa20e109d006faa635ab
     }
 }
 
