@@ -21,7 +21,7 @@
                                     <p class="admin-name text-center">{{ first_name }}</p>
                                     <p class="admin-mail text-center">{{ admin_email }}</p>
                                 </div>
-                                <li class="nav-item">
+                                <li class="nav-item" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">
                                     <div class="side-bar-info">
                                         <div class="dashboard-menus">
                                             <router-link class="dashboard-link" :to="{ name: 'dashboard-home'}">

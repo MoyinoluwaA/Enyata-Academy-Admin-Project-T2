@@ -17,7 +17,7 @@
                     v-model="admin.link"
                 />
             </form>
-            <form class='row gx-5 justify-content-center'>
+            <form class='row gx-5 justify-content-center' @submit.prevent="submitForm">
                 <formInput
                     inputBoxStyle='col-md-6'
                     inputStyle='bg-white text-black input-bg-white'
@@ -35,16 +35,16 @@
                     label='Batch Id'
                     v-model='admin.id'
                 />
-            </form>
-            <div class="form-group mt-4">
-                <label for="exampleFormControlTextarea1 compose-head fw-normal">Instructions</label>
-                <textarea class="form-control compose-questions mt-1" rows="3"></textarea>
-            </div>
-            <div class="row justify-content-center">
-                <div class=" row btn col-md-6 col-sm-12 mt-3">
-                    <button class="btn btn-login-purple mt-4" type="submit">Submit</button>
+                <div class="form-group mt-4">
+                    <label for="exampleFormControlTextarea1 compose-head fw-normal">Instructions</label>
+                    <textarea class="form-control compose-questions mt-1" v-model="admin.instruction" rows="3"></textarea>
                 </div>
-            </div>
+                <div class="row justify-content-center">
+                    <div class=" row btn col-md-6 col-sm-12 mt-3">
+                        <button class="btn btn-login-purple mt-4" type="submit">Submit</button>
+                    </div>
+                </div>
+            </form>
         </div>
         
         
@@ -59,15 +59,14 @@ export default {
 	components: {
             formInput,
 	},
-     data() {
+    data() {
         return {
             admin: {
                 link:'',
                 date:'',
                 id:'',
-
             }
         }
-     }
+    }
 }
 </script>
