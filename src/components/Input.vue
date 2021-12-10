@@ -24,7 +24,8 @@ export default {
         formStyle: String,
         readonly: String,
         min: String,
-        max: String
+        max: String,
+        invalidMsg: String
     },
 }
 </script>
