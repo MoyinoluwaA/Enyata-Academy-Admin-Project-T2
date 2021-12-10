@@ -1,7 +1,7 @@
 <template>
         <div class="dashboard-container">
             <select class="form-select form-select-lg dashboard-header result-header" aria-label=".form-select-lg example">
-                <option selected value="1" >Entries - Batch 1</option>
+                <option selected value="1" >Entries - Batch {{ batchId }}</option>
             </select>
             <p class="settings-sub-header mb-4">Comprises of all that applied for batch {{ batchId }}</p>
 
@@ -38,23 +38,22 @@
                     </tbody>
                 </table>
             </div>
-            <ApproveModal @click="updateApplicantStatus('approved')" modalText='Are you sure you want to approve this application?' />
-            <DeclineModal  @click="updateApplicantStatus('declined')" />
+            <Modal id='exampleModal' @click="updateApplicantStatus('approved')" modalText='Are you sure you want to approve this application?' />
+            <Modal id='exampleModal2'  @click="updateApplicantStatus('declined')" modalText="Are you sure you want to decline this application?" />
         </div>
 </template>
 
 <script>
 import OffCanvas from '@/components/Offcanvas.vue'
-import ApproveModal from '@/components/Modal.vue'
-import DeclineModal from '@/components/DeclineModal.vue'
+import Modal from '@/components/Modal.vue'
 import ApplicationService from '@/services/application'
 import { DateTime } from 'luxon'
+import { mapGetters } from 'vuex'
 
 export default {
     name: 'ApplicationEntries',
     components: {
-        ApproveModal,
-        DeclineModal,
+        Modal,
         OffCanvas
     }, 
     data() {
@@ -64,6 +63,9 @@ export default {
             error: false,
             applicant: {}
         }
+    },
+    computed: {
+        ...mapGetters(['getBatch'])
     },
     async mounted() {
         try {
@@ -80,6 +82,7 @@ export default {
                     item.cgpa = Number(item.cgpa).toFixed(2)
                 })
                 this.applicants = response
+                this.batchId = this.getBatch
             }
 
         } catch (error) {

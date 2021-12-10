@@ -103,7 +103,6 @@ export default {
 					heading: "Error Uploading Image",
 					content: "Error occured while uploading, kindly check the image size"
 				})
-				
 			}
 		}
 	},
