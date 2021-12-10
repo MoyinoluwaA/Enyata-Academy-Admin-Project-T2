@@ -43,12 +43,14 @@
                     v-model='admin.batch_id'
                     invalidMsg='This field cannot be empty'
                 />
+                
                 <div class="form-group mt-2 pt-1">
                     <label for="exampleFormControlTextarea1 compose-head fw-normal">Instructions</label>
                     <textarea class="form-control compose-questions mt-1" rows="3" v-model='admin.instructions'></textarea>
                 </div>
+
                 <div class="row justify-content-center">
-                    <div class=" row btn col-md-6 col-sm-12 mt-3">
+                    <div class="row col-md-6 col-sm-12 mt-3">
                         <button class="btn btn-login-purple mt-4" type="submit" :disabled='isDisabled'>Submit</button>
                     </div>
                 </div>
@@ -68,7 +70,7 @@ export default {
 	components: {
             formInput,
 	},
-     data() {
+    data() {
         return {
             admin: {
                 batch_id:'',
