@@ -1,12 +1,8 @@
 <template>
-    <div class='container create-app'>
+    <div class='container create-app mb-5'>
         <h2 class="dashboard-header ps-2">Create Application</h2>
         <div class="container content">
-            <form class='row align-items-center gx-5'>
-                <!-- <label class=" col-md-6 col-12 compose-file-choose file-choose-height text-center mb-4">
-                    <input class="compose-file-input" type="file" /> 
-                    <span class="compose-file-text">+ Choose file</span>
-                </label> -->
+            <form class='row gx-5 justify-content-center' @submit.prevent='createApplications()'>
                 <formInput
                     inputBoxStyle='col-md-6'
                     :inputStyle='isError.start_date'
@@ -25,8 +21,6 @@
                     label='Application closure date'
                     v-model="admin.closing_date"
                 />        
-            </form>
-            <form class='row gx-5 justify-content-center' @submit.prevent='createApplications()'>
                 <formInput
                     inputBoxStyle='col-md-6 link-input'
                     :inputStyle='isError.application_link'
@@ -49,19 +43,19 @@
                     v-model='admin.batch_id'
                     invalidMsg='This field cannot be empty'
                 />
-                <div class="form-group mt-4">
+                
+                <div class="form-group mt-2 pt-1">
                     <label for="exampleFormControlTextarea1 compose-head fw-normal">Instructions</label>
                     <textarea class="form-control compose-questions mt-1" rows="3" v-model='admin.instructions'></textarea>
                 </div>
+
                 <div class="row justify-content-center">
-                    <div class=" row btn col-md-6 col-sm-12 mt-3">
+                    <div class="row col-md-6 col-sm-12 mt-3">
                         <button class="btn btn-login-purple mt-4" type="submit" :disabled='isDisabled'>Submit</button>
                     </div>
                 </div>
             </form>
         </div>
-        
-        
     </div>
 </template>
 
@@ -69,13 +63,14 @@
 import formInput from '@/components/InputApplication.vue'
 import {linkRegex, dateRegex } from '@/helpers/variables'
 import ApplicationService from '@/services/application'
+import { mapActions } from 'vuex'
 
 export default {
     name: 'SignIn',
 	components: {
             formInput,
 	},
-     data() {
+    data() {
         return {
             admin: {
                 batch_id:'',
@@ -101,43 +96,37 @@ export default {
             )
         }
     },
-     methods: {
-         async createApplications() {
-             try {
-                 const {...admin}= this.admin
-                 const response = await ApplicationService.createApplication(admin)
-                 console.log(response)
-                 let content
-                 if (response.code === 201){
-                     content='Application has been successfully created'
+    methods: {
+        ...mapActions(['handleLogOut']),
+        async createApplications() {
+            try {
+                const {...admin}= this.admin
+                const response = await ApplicationService.createApplication(admin)
+                
+                if (response.code === 201){
                     this.$dtoast.pop({
                         preset: "success",
                         heading: 'Success',
-                        content
+                        content: 'Application has been successfully created'
                     })
                     this.$router.push({ name: 'create-assessment' })
-                 } 
-                 this.clearForm()
-             } catch (error) {
-                 console.log(error)
-                 let content='Error ocurred while application was created!'
-                  if (error.response.data.code === 401) {
-                    this.$dtoast.pop({
-                        preset: "error",
-                        heading: 'Error',
-                        content
-                    })
+                } 
+                this.clearForm()
+            } catch (error) {
+                if (error.response.data.code === 401) {
+                    this.handleLogOut()
+                    this.$router.push({ name: 'SignIn' })
                 } else {
                     this.$dtoast.pop({
                         preset: "error",
                         heading: 'Error',
-                        content
+                        content: 'Error ocurred while application was created!'
                     })
                 }
                 this.clearForm()
-             }
-         },
-         clearForm() {
+            }
+        },
+        clearForm() {
             return (
                 this.admin.batch_id = '',
                 this.admin.start_date = '',
@@ -147,7 +136,6 @@ export default {
                 this.isError={}
             )
         }
-     }
-    
+    }
 }
 </script>

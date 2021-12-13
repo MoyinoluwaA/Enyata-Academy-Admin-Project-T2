@@ -6,7 +6,7 @@
 .create-app {
     margin-top: 101px;
     @include media-breakpoint-up (xl) {
-        margin-left:40px ;
+        padding: 0 75px ;
     }
 
     .file-choose-height{

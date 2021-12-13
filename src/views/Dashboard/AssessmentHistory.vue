@@ -14,12 +14,12 @@
 					</tr>
 				</thead>
 				<tbody class="table-body">
-						<tr class="table-data" v-for="assessmentHistory in assessmentHistories" :key="assessmentHistory.id">
-						<td class="table-col p-3">{{ assessmentHistory.batch_id }}</td>
-						<td class="table-col p-3">{{ assessmentHistory.date_composed }}</td>
-						<td class="table-col p-3">{{ assessmentHistory.assessment_test.length }}</td>
-						<td class="table-col p-3">{{ assessmentHistory.time_allotted }}</td>
-						<td class="table-col p-3">{{ assessmentHistory.status }}</td>
+					<tr class="table-data" v-for="assessmentHistory in assessmentHistories" :key="assessmentHistory.id">
+						<td class="p-3">{{ assessmentHistory.batch_id }}</td>
+						<td class="p-3">{{ assessmentHistory.date_composed }}</td>
+						<td class="p-3">{{ assessmentHistory.assessment_test.length }}</td>
+						<td class="p-3">{{ assessmentHistory.time_allotted }}</td>
+						<td class="p-3">{{ assessmentHistory.status }}</td>
 					</tr>
 				</tbody>
 			</table>
