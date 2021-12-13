@@ -5,7 +5,7 @@
         Before creating assesssment, check if assessment for the batch already exists
 
         <div class="my-5 text-center">
-            <Button v-if='assessment' btnText='Check Assessment Exists' btnStyle='btn--gray mt-2' 
+            <Button v-if='assessment' btnText='Check Assessment Exists' btnStyle='btn-purple btn--hover mt-2' 
                 @click.native="checkAssessment"
             />
             <p v-else>Assessment for Batch {{ batch_id }} already exists</p>

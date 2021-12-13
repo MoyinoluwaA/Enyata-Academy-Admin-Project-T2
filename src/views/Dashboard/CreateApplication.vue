@@ -109,7 +109,7 @@ export default {
                         heading: 'Success',
                         content: 'Application has been successfully created'
                     })
-                    this.$router.push({ name: 'create-assessment' })
+                    // this.$router.push({ name: 'create-assessment' })
                 } 
                 this.clearForm()
             } catch (error) {

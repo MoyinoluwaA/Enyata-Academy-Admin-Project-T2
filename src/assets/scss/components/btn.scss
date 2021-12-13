@@ -13,7 +13,7 @@
         font-weight: 600;
         
         &-purple{
-            @include button($purple-color,$white-color)
+            @include button($purple-color,$white-color);
         }
         &-decline{
             @include button($white-color, $primary-color);
@@ -21,7 +21,10 @@
         }
     }
     &-purple{
-        @include button($purple-color,$white-color)
+        @include button($purple-color,$white-color);
+        &:hover{
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
     }
     &-offcanvas {
         width: 125px;
@@ -32,7 +35,6 @@
         height: 41px;
         margin-bottom: 40px;
     }
-
     &-wrapper {
         margin-top: 86px;
         display: flex;
