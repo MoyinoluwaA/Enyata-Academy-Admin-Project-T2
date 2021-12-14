@@ -1,7 +1,7 @@
 <template>
     <div class="col-12 form-input mb-4" :class="inputBoxStyle">
         <label :for="identifier" class="mb-2 form-label" :class="labelStyle">{{ label }}</label>
-        <input :type="type" class="form-control bg-white text-black input-bg-white" :class="inputStyle" :name="identifier" 
+        <input :type="type" class="form-control bg-white text-black input-bg-white" :class="inputStyle" :name="identifier" :min='min' :max='max'
             :value="value" @input="$emit('input', $event.target.value)" aria-describedby="inputGroupPrepend3 validationFeedback" :readonly="readonly"
         />
         <span id="validationFeedback" class="invalid-feedback">
@@ -24,6 +24,8 @@ export default {
         formStyle: String,
         readonly: String,
         invalidMsg: String,
+        min: String,
+        max: String
     },
 }
 </script>

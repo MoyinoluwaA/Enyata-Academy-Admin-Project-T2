@@ -1,14 +1,9 @@
 .sign-in {
     background-color: $purple-color;
     height: 100%;  
-
-    .loginImage{
-        mix-blend-mode: color-dodge;
-        display: none;
-        @include media-breakpoint-up (xl){
-            display: block;
-        }
-    }
+    background-image: url('assets/images/Group.svg');
+    background-repeat: no-repeat;
+    background-position: right center;
 }
 .signInBody {
     @include media-breakpoint-up (xl) {
@@ -31,6 +26,10 @@
         background-color: $purple-color;
         color: $white-color;
         position: relative;
+        &:focus {
+            background-color: $white-color;
+            color: $primary-color;
+        }
     }
     &-white {
         background-color: $white-color;

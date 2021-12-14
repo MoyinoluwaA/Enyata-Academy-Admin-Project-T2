@@ -7,7 +7,7 @@
                 </div>
                 <form class="action" @submit.prevent="signIn()">
                     <loginInput
-                        inputBoxStyle='col-md-6 offset-md-3'
+                        inputBoxStyle='col-md-6 col-lg-4 offset-md-3 offset-lg-4'
                         :inputStyle="isError.email"
                         type='email'
                         identifier='email'
@@ -20,7 +20,7 @@
                         invalidMsg='Enter a valid email address'
                     />
                     <formInputPassword
-                        inputBoxStyle='col-md-6 offset-md-3'
+                        inputBoxStyle='col-md-6 col-lg-4 offset-md-3 offset-lg-4'
                         :inputStyle="isError.password"
                         type='password'
                         identifier='password'
@@ -33,12 +33,9 @@
                         invalidMsg='Password should contain an uppercase, lowercase and digit'
                     />
                     <div class="d-flex flex-column justify-content-center align-items-center">
-                        <button class="btn col-md-6 col-12 btn-login mt-3" id="submit-btn" type="submit" :disabled='isDisabled'>Sign In</button>
+                        <button class="btn col-md-6 col-lg-4 col-12 btn-login mt-3" id="submit-btn" type="submit" :disabled='isDisabled'>Sign In</button>
                     </div>
                 </form>
-        </section>
-        <section>
-            <img src='../assets/images/Group.svg' alt="login_img" class="loginImage" />
         </section>
     </div> 
 </template>

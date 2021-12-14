@@ -11,6 +11,7 @@
                     labelStyle='form-label-dark'
                     label='Application start date'
                     v-model="admin.start_date"
+                    :min='today_date'
                 />
                 <formInput
                     inputBoxStyle='col-md-6'
@@ -20,6 +21,7 @@
                     labelStyle='form-label-dark'
                     label='Application closure date'
                     v-model="admin.closing_date"
+                    :min='admin.start_date'
                 />        
                 <formInput
                     inputBoxStyle='col-md-6 link-input'
@@ -64,9 +66,10 @@ import formInput from '@/components/InputApplication.vue'
 import {linkRegex, dateRegex } from '@/helpers/variables'
 import ApplicationService from '@/services/application'
 import { mapActions } from 'vuex'
+import { DateTime } from 'luxon'
 
 export default {
-    name: 'SignIn',
+    name: 'CreateApplication',
 	components: {
             formInput,
 	},
@@ -81,10 +84,14 @@ export default {
             },
             isError: {},
             linkRegex,
-            dateRegex
+            dateRegex,
+            today_date: ''
         }
-     },
-     computed: {
+    },
+    mounted() {
+        this.today_date = DateTime.now().toFormat('yyyy-MM-dd')
+    },
+    computed: {
         isDisabled () {
             return (
                 (!(this.admin.batch_id && this.admin.start_date && this.admin.closing_date && this.admin.application_link && this.admin.instructions)) ||
@@ -109,7 +116,6 @@ export default {
                         heading: 'Success',
                         content: 'Application has been successfully created'
                     })
-                    // this.$router.push({ name: 'create-assessment' })
                 } 
                 this.clearForm()
             } catch (error) {
@@ -117,10 +123,16 @@ export default {
                     this.handleLogOut()
                     this.$router.push({ name: 'SignIn' })
                 } else {
+                    let content
+                    if (error.response.data.code === 400) {
+                        content = error.response.data.message
+                    } else {
+                        content = 'Error ocurred while application was created!'
+                    }
                     this.$dtoast.pop({
                         preset: "error",
                         heading: 'Error',
-                        content: 'Error ocurred while application was created!'
+                        content
                     })
                 }
                 this.clearForm()
