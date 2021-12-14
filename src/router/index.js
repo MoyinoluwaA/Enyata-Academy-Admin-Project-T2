@@ -35,17 +35,22 @@ const routes = [
 				component: () => import('../views/Dashboard/ApplicationEntries.vue')
 			},
 			{
-				path: 'check-assessment-exist',
+				path: 'assessment',
+				name: 'assessment',
+				redirect: 'assessment/check-assessment-exist',
+			},
+			{
+				path: 'assessment/check-assessment-exist',
 				name: 'check-assessment-exist',
 				component: () => import('../views/Dashboard/CheckAssessment.vue')
 			},
 			{
-				path: 'create-assessment',
+				path: 'assessment/create-assessment',
 				name: 'create-assessment',
 				component: () => import('../views/Dashboard/CreateAssessment.vue')
 			},
 			{
-				path: 'compose-assessment',
+				path: 'assessment/compose-assessment',
 				name: 'compose-assessment',
 				component: () => import('../views/Dashboard/ComposeAssessment.vue')
 			},

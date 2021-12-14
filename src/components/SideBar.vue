@@ -80,8 +80,8 @@
             </div>
             <div class="side-bar d-none d-md-block">
                 <div class="side-bar-top">
-                    <img class="side-bar-profile-img admin-pf" :src="image" alt="profile-img">
-
+                    <img v-if='image' class="side-bar-profile-img admin-pf" :src="image" alt="profile-img">
+                    <img v-else class="side-bar-profile-img admin-pf" src="@/assets/icons/upload-img.svg" />
                     <p class="admin-name text-center">{{ first_name }}</p>
                     <p class="admin-mail text-center">{{ admin_email }}</p>
                 </div>
@@ -109,7 +109,7 @@
                     </div>
 
                     <div class="dashboard-menus">
-                        <router-link class="dashboard-link" :to="{ name: 'check-assessment-exist' }">
+                        <router-link class="dashboard-link" to="/dashboard/assessment">
                             <img class="dashboard-img" src="../assets/icons/compose-assessment-icon.svg" alt="create"/>
                             <span class="dashboard-menu">Compose Assessment</span>
                         </router-link>
