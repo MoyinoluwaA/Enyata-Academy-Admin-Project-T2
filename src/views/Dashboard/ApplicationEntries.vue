@@ -6,7 +6,7 @@
             <p class="settings-sub-header mb-4">Comprises of all that applied for batch {{ batchId }}</p>
 
             <p v-if='error' class="fs-2 mt-4">An error occurred while fetching applicants data</p>
-            <div v-else class="table-responsive">
+            <div v-else class="result-wrapper table-responsive">
                 <table class="table table-borderless my-4">
                     <thead class="table-head">
                         <tr class="text-center">

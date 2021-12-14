@@ -83,19 +83,21 @@ export default {
                     this.clearForm()
                 }
             }catch(error) {
-                 if (error.response.data.code === 401) {
-                    let content
+                let content
+                if (error.response.data.code === 401) {
                     if (error.response.data.message === 'Invalid credentials') {
                         content = 'Invalid Credentials'
                     } else {
                         content = 'Admin not verified'
                     }
-                    this.$dtoast.pop({
-                        preset: "error",
-                        heading: 'Error occured while logging in',
-                        content
-                    })
+                } else if (error.response.data.code === 403) {
+                    content = 'Invalid Credentials'
                 }
+                this.$dtoast.pop({
+                    preset: "error",
+                    heading: 'Error occured while logging in',
+                    content
+                })
                 this.clearForm()
              }
          }, 
