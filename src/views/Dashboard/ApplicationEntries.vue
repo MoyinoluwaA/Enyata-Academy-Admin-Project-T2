@@ -25,8 +25,7 @@
                     <tbody>
                         <p v-if='applicants === []' class="fs-3 fw-bold">There are no applicants yet. Check back later</p>
                         <tr v-else class="table-data" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" @click="selectApplicant(applicant.id)"
-                            aria-controls="offcanvasRight" v-for="applicant in applicants" :key="applicant.id"
-                        >
+                            aria-controls="offcanvasRight" v-for="applicant in applicants" :key="applicant.id">
                             <td class="p-3 mb-2">{{ applicant.first_name }} {{ applicant.last_name }}</td>
                             <td class="p-3 mb-2">{{ applicant.email }}</td>
                             <td class="p-3 mb-2">{{ applicant.date_of_birth }} - {{ applicant.age }}</td>
